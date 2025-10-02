@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : lun. 15 sep. 2025 à 12:49
--- Version du serveur : 10.4.28-MariaDB
--- Version de PHP : 8.0.28
+-- Hôte : localhost
+-- Généré le : jeu. 02 oct. 2025 à 14:23
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,21 +50,21 @@ CREATE TABLE `article` (
 --
 
 INSERT INTO `article` (`id`, `name`, `description`, `quantity`, `category_id`, `location`, `is_enabled`, `for_sale`, `price`, `image_url`, `image_1`, `image_2`, `image_3`, `created_at`, `deleted_at`) VALUES
-(1, 'Ordinateur Macbook pro 2020', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!', 20, 9, '', 1, 1, '0', './public/images/2.jpg', NULL, NULL, NULL, '0000-00-00 00:00:00', NULL),
+(1, 'Ordinateur Macbook pro 2020', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!', 200, 9, '', 1, 1, '200.000', './public/images/2.jpg', './public/images/2-10.jpg', './public/images/mac.jpg', './public/images/mac.jpg', '0000-00-00 00:00:00', NULL),
 (2, 'Cable Rj 45', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!', 1, 9, NULL, 0, 0, NULL, './public/images/person_66ec37419d7fd.png', NULL, NULL, NULL, '0000-00-00 00:00:00', NULL),
 (4, 'Citroen C3', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!', 3, 3, NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', NULL),
-(29, 'Voiture lamborghini', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!', 3, 3, 'Casier 3', 1, 0, NULL, './public/images/maxresdefault.jpg', NULL, NULL, NULL, '0000-00-00 00:00:00', NULL),
+(29, 'Voiture lamborghini', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!', 3, 3, 'Casier 3', 1, 1, '300.000', './public/images/maxresdefault.jpg', NULL, NULL, NULL, '0000-00-00 00:00:00', NULL),
 (30, 'Ecran plat smart tv', 'Lorem Ipsum est un générateur de faux textes aléatoires. Vous choisissez le nombre de paragraphes, de mots ou de listes. Vous obtenez alors un texte aléatoire ...', 13, NULL, 'Casier 1', 1, 0, '200', './public/images/6_6705091fd4732.jpg', NULL, NULL, NULL, '0000-00-00 00:00:00', NULL),
 (37, 'Ecran plat smart tv', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!', 0, 2, '', 1, 0, NULL, './public/images/7_670404a9672a9.jpg', NULL, NULL, NULL, '0000-00-00 00:00:00', NULL),
-(38, 'Ecran plat semi smart tv ', '<i></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!<br>', 11, 2, 'Casier 1', 1, 1, '0', './public/images/6.jpg', './public/images/7_6708f10579e83.jpg', './public/images/6_6708f156b052d.jpg', './public/images/7_6708f156b6a34.jpg', '0000-00-00 00:00:00', NULL),
+(38, 'Ecran plat semi smart tv ', '<i></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!<br>', 11, 2, 'Casier 1', 1, 1, '900.000', './public/images/6.jpg', './public/images/7_6708f10579e83.jpg', './public/images/6_6708f156b052d.jpg', './public/images/7_6708f156b6a34.jpg', '0000-00-00 00:00:00', NULL),
 (39, 'Ecran plat smart tv', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!', 8, 6, 'Casier 1', 1, 0, '', './public/images/7.jpg', NULL, NULL, NULL, '0000-00-00 00:00:00', NULL),
-(40, 'Renault', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!', 2, 3, 'Parking ', 1, 1, '900000', './public/images/5.jpg', './public/images/images (1).jfif', './public/images/images (3).jfif', './public/images/images (2).jfif', '0000-00-00 00:00:00', NULL),
+(40, 'Renault', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!', 2, 3, 'Parking ', 1, 1, '100.000', './public/images/5.jpg', './public/images/images (1).jfif', './public/images/images (3).jfif', './public/images/images (2).jfif', '0000-00-00 00:00:00', NULL),
 (42, 'Mackbook pro 2019', 'Le MacBook Pro est doté de l’autonomie la plus longue sur un Mac : jusqu’à 22 heures. C’est ça, l’efficacité énergétique des puces Apple. Et qu’ils soient branchés ou non, tous les modèles sont aussi rapides. Dès que l’inspiration surgit ou que le devoir vous appelle, vous pouvez foncer, votre portable vous suit.', 10, 9, 'Casier 1', 1, 0, '900000', './public/images/2_6706720b399b4.jpg', './public/images/2_6706adc40adb3.jpg', './public/images/2_6706adc40c54c.jpg', './public/images/7_6707a5c33a3d9.jpg', '0000-00-00 00:00:00', NULL),
 (45, 'Fontaine', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!', 3, 2, 'Casier 3', 1, 1, '100000', './public/images/fontaine.png', './public/images/unnamed.jpg', './public/images/fontaine.png', './public/images/unnamed.jpg', '0000-00-00 00:00:00', NULL),
-(46, 'Fontaine petit model', 'ééé éLorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!', 1, 6, 'Casier 1', 1, 1, '0', './public/images/fontaine.png', './public/images/fontaine-ea-eau-tanex-t-6alv-canaletas-2515035001.jpg', './public/images/fontaine-ea-eau-tanex-t-6alv-canaletas-2515035001.jpg', './public/images/fontaine-ea-eau-tanex-t-6alv-canaletas-2515035001.jpg', '0000-00-00 00:00:00', NULL),
+(46, 'Fontaine petit model', 'ééé éLorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, veritatis sapiente ducimus dolorem praesentium repellat odit vero, ut harum quibusdam eveniet soluta sit? Aliquid tenetur suscipit sapiente voluptatem eaque tempore!', 1, 6, 'Casier 1', 1, 1, '40.000', './public/images/fontaine.png', './public/images/fontaine-ea-eau-tanex-t-6alv-canaletas-2515035001.jpg', './public/images/fontaine-ea-eau-tanex-t-6alv-canaletas-2515035001.jpg', './public/images/fontaine-ea-eau-tanex-t-6alv-canaletas-2515035001.jpg', '0000-00-00 00:00:00', NULL),
 (47, 'Ordinateur portable HP', 'Tout d\'abord, il faut dire que HP est une marque de renom dans le monde des ordinateurs portables. Elle offre en effet une gamme variée de produits adaptés à différents besoins et budgets. Deux de ses séries phares, l\'EliteBook et le ProBook, se distinguent particulièrement.', 9, 9, 'Casier 1', 1, 0, '90000', './public/images/c08225693_390x286.jpg', './public/images/6400.png', './public/images/laptop_17-HP-ordinateur-portable-vendu-au-benin.jpg', './public/images/vie-immobile-appareil-table_23-2150994379.avif', '0000-00-00 00:00:00', NULL),
 (49, 'Ordinateur Macbook pro 2018', 'Tout d\'abord, il faut dire que HP est une marque de renom dans le monde des ordinateurs portables. Elle offre en effet une gamme variée de produits adaptés à différents besoins et budgets. Deux de ses séries phares, l\'EliteBook et le ProBook, se distinguent particulièrement.', 2, 2, 'Casier 1', 1, 0, '900000', './public/images/mac.png', './public/images/ordinateur-portable-lenovo-idea-pad-15--core-i3-8gb-256gb-ssd-1115g4_682f1e9ee7bbd.jpg', './public/images/ordinateur-portable-lenovo-idea-pad-15--core-i3-8gb-256gb-ssd-1115g4.jpg', './public/images/ordinateur-portable-lenovo-idea-pad-15--core-i3-8gb-256gb-ssd-1115g4.jpg', '0000-00-00 00:00:00', NULL),
-(50, 'Table bureau', 'Plateau, cache jambes et parois en bois mélaminé\n02 passe-câbles et 04 patins antidérapants\n03 dimensions disponibles :\nBureau (L x l x H) : 140 x 80 x 75 cm\nBureau (L x l x H) : 160 x 80 x 75 cm\nBureau (L x l x H) : 180 x 80 x 75 cm\nCaisson mobile à 03 tiroirs verrouillage centralisé\nmuni de poignées et d’un jeu de clés', 4, 2, 'Magasin 12', 1, 1, '0', './public/images/1_67123765bb787.jpg', './public/images/4.jpg', './public/images/1.jpg', './public/images/4.jpg', '0000-00-00 00:00:00', NULL),
+(50, 'Table bureau', 'Plateau, cache jambes et parois en bois mélaminé\r\n02 passe-câbles et 04 patins antidérapants\r\n03 dimensions disponibles :\r\nBureau (L x l x H) : 140 x 80 x 75 cm\r\nBureau (L x l x H) : 160 x 80 x 75 cm\r\nBureau (L x l x H) : 180 x 80 x 75 cm\r\nCaisson mobile à 03 tiroirs verrouillage centralisé\r\nmuni de poignées et d’un jeu de clés', 4, 2, 'Magasin 12', 1, 1, '200.000', './public/images/1_67123765bb787.jpg', './public/images/4.jpg', './public/images/1.jpg', './public/images/4.jpg', '0000-00-00 00:00:00', NULL),
 (51, 'WS-C2960-24PC-L', '', 0, 11, '', 1, 0, NULL, '', '', '', '', '0000-00-00 00:00:00', NULL),
 (52, 'cisco ISR4321/K9 ', '<b>N° identification</b>:&nbsp;&nbsp;<span>\n  <span>RSG02<br></span></span><b>N° série</b>:&nbsp;<span>\n  <span>FDO214103CV<br></span></span><b>Config recup</b>:&nbsp;<span>\n  <span>OK<br></span></span><b>Reinit</b>:&nbsp;<span>\n  <span>OK<br></span></span><b>Site</b>:&nbsp;&nbsp;&nbsp;&nbsp;<span>\n  <span>SALY<br></span></span><b>Societe</b>:&nbsp; &nbsp; SG', 1, 12, '', 1, 0, '', './public/images/cisco-isr4321-k9-cisco-isr-4321-2ge-2nim-4g-flash-4g-dram-ipb-10111695-CTs3.jpg', './public/images/cisco-isr4321-k9-cisco-isr-4321-2ge-2nim-4g-flash-4g-dram-ipb-10111695-CTs3.jpg', './public/images/cisco-isr4321-k9-cisco-isr-4321-2ge-2nim-4g-flash-4g-dram-ipb-10111695-CTs3.jpg', './public/images/cisco-isr4321-k9-cisco-isr-4321-2ge-2nim-4g-flash-4g-dram-ipb-10111695-CTs3.jpg', '0000-00-00 00:00:00', NULL),
 (53, 'Cisco 1921', '', 0, 12, '', 1, 0, NULL, '', '', '', '', '0000-00-00 00:00:00', NULL),
@@ -263,9 +263,9 @@ CREATE TABLE `command` (
 
 INSERT INTO `command` (`id`, `name`, `email`, `address`, `phone`, `article_id`, `user_id`, `quantity`, `is_validated`, `created_at`, `deleted_at`) VALUES
 (18, NULL, NULL, NULL, NULL, 45, 33, 0, 1, '2025-03-27 15:46:56', NULL),
-(19, NULL, NULL, NULL, NULL, 40, 33, NULL, NULL, '2025-03-27 15:48:38', NULL),
-(24, NULL, NULL, NULL, NULL, 50, 33, NULL, NULL, '2025-08-14 15:21:41', NULL),
-(26, NULL, NULL, NULL, NULL, 50, 35, NULL, NULL, '2025-09-12 09:57:40', NULL);
+(26, NULL, NULL, NULL, NULL, 50, 35, NULL, NULL, '2025-09-12 09:57:40', NULL),
+(37, NULL, NULL, NULL, NULL, 40, 33, NULL, NULL, '2025-09-16 13:14:38', NULL),
+(40, NULL, NULL, NULL, NULL, 50, 33, NULL, NULL, '2025-09-18 12:00:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -472,7 +472,8 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`, `role_id`, `profil_id`, `
 (32, 'Pape', 'pape-massar.sow-prest@socgen.com', '$2y$10$ZSzEj00l9hpveyqkiwOVV.hV5aK71bNEDEIPt1p6N7GMRRhlkZ5JS', 3, NULL, '2024-10-07 12:06:59', NULL, NULL, 1),
 (33, 'Massar Pape', 'admin@admin.com', '$2y$10$ULCUAtXHr40WM8r.8sTAU.XzcZPMaiqmp/b3H15bVWXZoIvJ9TNyq', 1, NULL, '2024-10-14 10:55:56', '2232245', NULL, 1),
 (34, 'test', 'test@admin.com', '$2y$10$XmpBkjEbUHNkAFYWyrNEHOGhUf.TDzx0LYe.2vl0rt7.xaRqC89W.', 3, NULL, '2025-06-05 13:06:49', NULL, NULL, 1),
-(35, 'Pape Sow', 'admin9@admin.com', '$2y$10$QUCbLCPQBFQxUErwyBNTeOnYFyoh1EW/Gnxlwhze6lgtSzMd0f.Xe', 3, NULL, '2025-09-11 16:58:49', NULL, NULL, 1);
+(35, 'Pape Sow', 'admin9@admin.com', '$2y$10$QUCbLCPQBFQxUErwyBNTeOnYFyoh1EW/Gnxlwhze6lgtSzMd0f.Xe', 3, NULL, '2025-09-11 16:58:49', NULL, NULL, 1),
+(36, 'jfjdfk', 'khlhj', '$2y$10$ykvr/iZ5.n.aV4Y5H8eEyublFuJhSqmEVuqGaQcv8mXlsqaByvzdy', 3, NULL, '2025-09-18 10:58:27', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -630,7 +631,7 @@ ALTER TABLE `cession`
 -- AUTO_INCREMENT pour la table `command`
 --
 ALTER TABLE `command`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT pour la table `delivery`
@@ -684,7 +685,7 @@ ALTER TABLE `status_request`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT pour la table `user_category`
