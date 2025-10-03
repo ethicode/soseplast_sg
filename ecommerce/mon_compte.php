@@ -42,9 +42,6 @@
                             <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-1 row-deck g-3">
                                 <div class="col">
                                     <div class="card profile-card">
-                                        <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                            <h6 class="mb-0 fw-bold ">Profile</h6>
-                                        </div>
                                         <div class="card-body d-flex profile-fulldeatil flex-column">
                                             <div class="profile-block text-center w220 mx-auto">
                                                 <a href="#">
@@ -56,19 +53,19 @@
                                             </div>
                                             <div class="profile-info w-100">
                                                 <h6 class="mb-0 mt-2  fw-bold d-block fs-6 text-center"><?php echo $user["name"] ?></h6>
-                                                <span class="py-1 fw-bold small-11 mb-0 mt-1 text-muted text-center mx-auto d-block">24 years, California</span>
-                                                <p class="mt-2">Duis felis ligula, pharetra at nisl sit amet, ullamcorper fringilla mi. Cras luctus metus non enim porttitor sagittis. Sed tristique scelerisque arcu id dignissim.</p>
+                                                <!-- <span class="py-1 fw-bold small-11 mb-0 mt-1 text-muted text-center mx-auto d-block">24 years, California</span> -->
+                                                <!-- <p class="mt-2">Duis felis ligula, pharetra at nisl sit amet, ullamcorper fringilla mi. Cras luctus metus non enim porttitor sagittis. Sed tristique scelerisque arcu id dignissim.</p> -->
                                                 <div class="row g-2 pt-2">
                                                     <div class="col-xl-12">
                                                         <div class="d-flex align-items-center">
                                                             <i class="icofont-ui-touch-phone"></i>
-                                                            <span class="ms-2">202-555-0174 </span>
+                                                            <span class="ms-2"><?php echo $user["phone"] ?> </span>
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-12">
                                                         <div class="d-flex align-items-center">
                                                             <i class="icofont-email"></i>
-                                                            <span class="ms-2">adrianallan@gmail.com</span>
+                                                            <span class="ms-2"><?php echo $user["email"] ?></span>
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-12">
@@ -88,7 +85,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <!-- <div class="col">
                                     <div class="card">
                                         <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
                                             <h6 class="mb-0 fw-bold ">Expence Count</h6>
@@ -124,9 +121,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
-                            <div class="card mt-3">
+                            <!-- <div class="card mt-3">
                                 <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
                                     <h6 class="mb-0 fw-bold ">Status report</h6>
                                 </div>
@@ -170,7 +167,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-xxl-8 col-xl-12 col-lg-12 col-md-12">
                             <div class="row g-3 mb-3 row-cols-1 row-cols-md-1 row-cols-lg-2 row-deck">
@@ -183,7 +180,7 @@
                                             <div class="row g-3">
                                                 <div class="col-12">
                                                     <label class="form-label col-6 col-sm-5">Block Number:</label>
-                                                    <span><strong>A-510</strong></span>
+                                                    <span><strong><?php echo $user["points"] ?></strong></span>
                                                 </div>
                                                 <div class="col-12">
                                                     <label class="form-label col-6 col-sm-5">Address:</label>

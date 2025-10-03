@@ -3,6 +3,7 @@ require_once('models/UserModel.php');
 require_once('models/User.php');
 require_once('models/Command.php');
 require_once('models/Role.php');
+require_once('models/Point.php');
 
 class UserController
 {
@@ -10,6 +11,7 @@ class UserController
     private $userModel;
     private $commandModel;
     private $roleModel;
+    private $pointModel;
 
     public function __construct()
     {
@@ -17,6 +19,7 @@ class UserController
         $this->userModel = new User();
         $this->roleModel = new Role();
         $this->commandModel = new Command();
+        $this->pointModel = new Point();
     }
 
     public function showUsers()
@@ -107,6 +110,7 @@ class UserController
         $id = $_SESSION['soseplast_user_id'];
         $user = $this->userModel->getUserById($id);
         $commands = $this->commandModel->myCommands($id);
+        $point = $this->pointModel->getPointByUser($id);
         require_once('mon_compte.php');
     }
 
