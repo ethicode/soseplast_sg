@@ -27,7 +27,7 @@ class User
 
     public function getUsersByPagination($calc_page, $num_results_on_page)
     {
-        $stmt = $this->db->prepare("SELECT user.id, user.email, user.name, user.is_enabled, role.name AS role_name FROM user left join role on user.role_id=role.id ORDER BY user.id DESC  LIMIT ?,?;");
+        $stmt = $this->db->prepare("SELECT user.id, user.point, user.email, user.name, user.is_enabled, role.name AS role_name FROM user left join role on user.role_id=role.id ORDER BY user.id DESC  LIMIT ?,?;");
         $stmt->bind_param('ii', $calc_page, $num_results_on_page); // "i" signifie que le paramètre est un entier.
         $stmt->execute();
         $result = $stmt->get_result();

@@ -178,7 +178,7 @@
                                                         <div class="form-group">
                                                             <div class="col-md-12 m-b-20">
                                                                 <input type="text" class="form-control"
-                                                                    placeholder="name" name="name">
+                                                                    placeholder="Nom d'utilisateur" name="name">
                                                             </div>
                                                             <div class="col-md-12 m-b-20">
                                                                 <input type="text" class="form-control"
@@ -186,7 +186,7 @@
                                                             </div>
                                                             <div class="col-md-12 m-b-20">
                                                                 <input type="text" class="form-control"
-                                                                    placeholder="Password" name="password">
+                                                                    placeholder="Mot de passe" name="password">
                                                             </div>
                                                             <div class="col-md-12 m-b-20">
                                                                 <label class="form-label">Rôle</label>
@@ -219,6 +219,7 @@
                                                 <tr>
                                                     <th>Nom</th>
                                                     <th>Email</th>
+                                                    <th>Point</th>
                                                     <th>Rôle</th>
                                                     <th>Etat</th>
                                                     <th>Action</th>
@@ -238,7 +239,12 @@
                                                                 <?php echo $user["email"]; ?>
                                                             </a>
                                                         </td>
-                                                        <td><span class="label <?php echo $user["role_name"] == "Administrateur" ? 'label-danger' : 'label-success' ?> "><?php echo $user["role_name"]; ?></span> </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <?php echo $user["point"]; ?>
+                                                            </a>
+                                                        </td>
+                                                        <td class=""><span class="label fw-bold <?php echo $user["role_name"] == "Administrateur" ? 'label-danger' : ($user["role_name"] == "Utilisateur" ? 'bg-dark' : 'label-success'); ?>"><?php echo $user["role_name"]; ?></span> </td>
                                                         <td><?php echo $user["is_enabled"] == 1 ? 'Activé' : 'Désactivé'; ?></td>
                                                         <td>
                                                             <div class="btn-group">
@@ -261,7 +267,7 @@
                                                                     <form method="POST" action="utilisateurs.php">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
-                                                                                <h4 class="modal-title" id="mySmallModalLabel"><?php echo 'Confirmer la désactivation '?></h4>
+                                                                                <h4 class="modal-title" id="mySmallModalLabel"><?php echo 'Confirmer la désactivation ' ?></h4>
                                                                                 <input type="hidden" name="user_id" value="<?php echo $user["id"] ?>">
                                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                                                                             </div>

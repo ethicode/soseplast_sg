@@ -126,9 +126,10 @@ class UserController
             $email = $_POST['email'];
             $role_id = $_POST['role_id'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $this->userModel->addUser($name, $email, $password, $role_id);
+            // $this->userModel->addUser($name, $email, $password, $role_id);
+            $userId = $this->userModel->addUser($name, $email, $password, $role_id);
+            header('Location: ?action=utilisateurs');
         }
-        header('Location: ?action=utilisateurs');
     }
 
     public function editUser()

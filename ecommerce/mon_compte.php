@@ -47,37 +47,28 @@
                                                 <a href="#">
                                                     <img src="assets/images/lg/avatar4.svg" alt="" class="avatar xl rounded img-thumbnail shadow-sm">
                                                 </a>
-                                                <div class="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
-                                                    <span class="text-muted small">ID : #CS-00002</span>
-                                                </div>
                                             </div>
                                             <div class="profile-info w-100">
-                                                <h6 class="mb-0 mt-2  fw-bold d-block fs-6 text-center"><?php echo $user["name"] ?></h6>
+                                                <h6 class="mb-0 mt-2  fw-bold d-block fs-4 text-center"><?php echo $user["name"] ?></h6>
                                                 <!-- <span class="py-1 fw-bold small-11 mb-0 mt-1 text-muted text-center mx-auto d-block">24 years, California</span> -->
                                                 <!-- <p class="mt-2">Duis felis ligula, pharetra at nisl sit amet, ullamcorper fringilla mi. Cras luctus metus non enim porttitor sagittis. Sed tristique scelerisque arcu id dignissim.</p> -->
                                                 <div class="row g-2 pt-2">
                                                     <div class="col-xl-12">
-                                                        <div class="d-flex align-items-center">
+                                                        <div class="d-flex align-items-center h5">
                                                             <i class="icofont-ui-touch-phone"></i>
                                                             <span class="ms-2"><?php echo $user["phone"] ?> </span>
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-12">
-                                                        <div class="d-flex align-items-center">
+                                                        <div class="d-flex align-items-center h5">
                                                             <i class="icofont-email"></i>
                                                             <span class="ms-2"><?php echo $user["email"] ?></span>
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-12">
-                                                        <div class="d-flex align-items-center">
+                                                        <div class="d-flex align-items-center h5">
                                                             <i class="icofont-birthday-cake"></i>
                                                             <span class="ms-2">19/03/1980</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xl-12">
-                                                        <div class="d-flex align-items-center">
-                                                            <i class="icofont-address-book"></i>
-                                                            <span class="ms-2">2734 West Fork Street,EASTON 02334.</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -85,43 +76,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="col">
-                                    <div class="card">
-                                        <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                            <h6 class="mb-0 fw-bold ">Expence Count</h6>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-end text-center">
-                                                <div class="p-2">
-                                                    <h6 class="mb-0 fw-bold">$1790</h6>
-                                                    <span class="text-muted">Total</span>
-                                                </div>
-                                                <div class="p-2 ms-4">
-                                                    <h6 class="mb-0 fw-bold">$149.16</h6>
-                                                    <span class="text-muted">Avg Month</span>
-                                                </div>
-                                            </div>
-                                            <div id="apex-circle-gradient"></div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <span class="mb-3 d-block">Food</span>
-                                                    <div class="progress-bar  bg-secondary" role="progressbar" style="width: 55%; height: 5px;"></div>
-                                                    <span class="mt-2 d-block text-secondary">$597 spend</span>
-                                                </div>
-                                                <div class="col">
-                                                    <span class="mb-3 d-block">Cloth</span>
-                                                    <div class="progress-bar  bg-primary" role="progressbar" style="width: 60%; height: 5px;"></div>
-                                                    <span class="mt-2 d-block text-primary">$845 spend</span>
-                                                </div>
-                                                <div class="col">
-                                                    <span class="mb-3 d-block">Other</span>
-                                                    <div class="progress-bar  bg-lavender-purple" role="progressbar" style="width: 70%; height: 5px;"></div>
-                                                    <span class="mt-2 d-block color-lavender-purple">$348 spend</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-lg btn-danger text-white fw-bold" type="button">TOTAL POINT: <?php echo $point["points"] ?></button>
+                                </div>
                             </div>
                             <!-- <div class="card mt-3">
                                 <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
@@ -170,62 +127,6 @@
                             </div> -->
                         </div>
                         <div class="col-xxl-8 col-xl-12 col-lg-12 col-md-12">
-                            <div class="row g-3 mb-3 row-cols-1 row-cols-md-1 row-cols-lg-2 row-deck">
-                                <div class="col">
-                                    <div class="card auth-detailblock">
-                                        <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                            <h6 class="mb-0 fw-bold ">Delivery Address</h6>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="row g-3">
-                                                <div class="col-12">
-                                                    <label class="form-label col-6 col-sm-5">Block Number:</label>
-                                                    <span><strong><?php echo $user["points"] ?></strong></span>
-                                                </div>
-                                                <div class="col-12">
-                                                    <label class="form-label col-6 col-sm-5">Address:</label>
-                                                    <span><strong>81 Fulton London</strong></span>
-                                                </div>
-                                                <div class="col-12">
-                                                    <label class="form-label col-6 col-sm-5">Pincode:</label>
-                                                    <span><strong>385467</strong></span>
-                                                </div>
-                                                <div class="col-12">
-                                                    <label class="form-label col-6 col-sm-5">Phone:</label>
-                                                    <span><strong>202-458-4568</strong></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card">
-                                        <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                            <h6 class="mb-0 fw-bold ">Billing Address</h6>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="row g-3">
-                                                <div class="col-12">
-                                                    <label class="form-label col-6 col-sm-5">Block Number:</label>
-                                                    <span><strong>A-510</strong></span>
-                                                </div>
-                                                <div class="col-12">
-                                                    <label class="form-label col-6 col-sm-5">Address:</label>
-                                                    <span><strong>81 Fulton London</strong></span>
-                                                </div>
-                                                <div class="col-12">
-                                                    <label class="form-label col-6 col-sm-5">Pincode:</label>
-                                                    <span><strong>385467</strong></span>
-                                                </div>
-                                                <div class="col-12">
-                                                    <label class="form-label col-6 col-sm-5">Phone:</label>
-                                                    <span><strong>202-458-4568</strong></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="card">
                                 <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
                                     <h6 class="mb-0 fw-bold ">Mes commandes</h6>
@@ -234,17 +135,15 @@
                                     <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width: 100%;">
                                         <thead>
                                             <tr>
-                                                <th>Id</th>
                                                 <th>Item</th>
                                                 <th>Payment Info</th>
-                                                <th>Order Date</th>
+                                                <th>Point</th>
                                                 <th>Price</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($commands as $command): ?>
                                                 <tr>
-                                                    <td><a href="order-details.html"><strong>#Order-78414</strong></a></td>
                                                     <td><img src="assets/images/product/product-1.jpg" class="avatar lg rounded me-2" alt="profile-image"><span><?php echo $command["name"]; ?> </span></td>
                                                     <?php if ($command["is_validated"] === 1): ?>
                                                         <td><span class="badge bg-success">Validé</span> </td>
@@ -253,9 +152,11 @@
                                                     <?php else: ?>
                                                         <td><span class="badge bg-danger">rejeté</span> </td>
                                                     <?php endif ?>
-                                                    <td>June 16, 2021</td>
+                                                    <td><?php echo $command["point"]; ?> </td>
                                                     <td>
-                                                        $420
+                                                        <?php if ($command["is_validated"] === null): ?>
+                                                            <button type="button" class="btn btn-outline-danger deleterow"onclick="confirmCancelReservation('<?php echo $command["id"]; ?>')"><i class="icofont-ui-delete text-dark"></i></button>
+                                                        <?php endif ?>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
@@ -454,6 +355,13 @@
                     }]
                 });
         });
+    </script>
+    <script type="text/javascript">
+        function confirmCancelReservation(id) {
+            if (confirm("Voulez-vous annuler la réservation de cet article ?")) {
+                window.location.href = "index.php?action=deleteCommand&id=" + id;
+            }
+        }
     </script>
 </body>
 
