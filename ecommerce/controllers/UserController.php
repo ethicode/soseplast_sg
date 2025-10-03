@@ -107,7 +107,7 @@ class UserController
         $id = $_SESSION['soseplast_user_id'];
         $user = $this->userModel->getUserById($id);
         $commands = $this->commandModel->myCommands($id);
-        require_once('views/user/my_account.php');
+        require_once('mon_compte.php');
     }
 
     public function addUserForm()

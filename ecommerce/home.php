@@ -111,77 +111,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="card">
-                                    <div class="rating-block">
-                                        <div class="filter-title">
-                                            <a class="title" data-bs-toggle="collapse" href="#rating" role="button" aria-expanded="false">Selectionner Rating</a>
-                                        </div>
-                                        <div class="collapse show" id="rating">
-                                            <div class="filter-rating">
-                                                <ul>
-                                                    <li>
-                                                        <div class="rating-check">
-                                                            <input type="checkbox" id="rating-5">
-                                                            <label for="rating-5"><span></span>
-
-                                                            </label>
-                                                            <p>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="rating-check">
-                                                            <input type="checkbox" id="rating-4">
-                                                            <label for="rating-4"><span></span></label>
-                                                            <p>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="rating-check">
-                                                            <input type="checkbox" id="rating-3">
-                                                            <label for="rating-3"><span></span></label>
-                                                            <p>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="rating-check">
-                                                            <input type="checkbox" id="rating-2">
-                                                            <label for="rating-2"><span></span></label>
-                                                            <p>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="rating-check">
-                                                            <input type="checkbox" id="rating-1">
-                                                            <label for="rating-1"><span></span></label>
-                                                            <p>
-                                                                <i class="icofont-star"></i>
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-9">
@@ -201,10 +130,9 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content p-3">
-                                                    <span class="rating mb-2 d-block"><i class="icofont-star text-warning"></i> 4.5 (145)</span>
+                                                    <span class="rating mb-2 d-block fw-bold fs-5 text-black"><i class="icofont-star text-warning"></i><?php echo $article["price"] ?> (<?php echo $article["quantity"] ?>)</span>
                                                     <a href="product-detail.html" class="fw-bold"><?php echo $article["name"] ?> </a>
                                                     <p class="text-muted"><?php echo substr($article["description"], 0, 90) . "..."; ?></p>
-                                                    <span class="d-block fw-bold fs-5 text-black"><?php echo $article["price"] ?></span>
                                                     <button type="button" class="btn waves-effect waves-light btn-danger text-white fw-bold" data-bs-toggle="modal" data-bs-target="#command<?php echo $article["id"] ?>">Commander</button>
                                                     <div id="command<?php echo $article["id"] ?>" class="modal in" tabindex="-1" role="dialog"
                                                         aria-labelledby="myModalLabel" aria-hidden="true">
@@ -279,12 +207,12 @@
         var input4 = document.getElementById('maxAmount2');
         var inputs2 = [input3, input4];
         noUiSlider.create(stepsSlider2, {
-            start: [50000, 60000000],
+            start: [0.5, 1.0],
             connect: true,
             step: 1,
             range: {
-                'min': [1000],
-                'max': 100000000
+                'min': [0.5],
+                'max': 5.0
             },
 
         });

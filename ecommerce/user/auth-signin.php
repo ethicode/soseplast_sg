@@ -2,6 +2,7 @@
 <html class="no-js" lang="en" dir="ltr">
 
 <!-- Mirrored from pixelwibes.com/template/ebazar/html/dist/ui-elements/auth-signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Aug 2025 13:38:07 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -12,12 +13,13 @@
     <!-- project css file  -->
     <link rel="stylesheet" href="dist/assets/css/ebazar.style.min.css">
 </head>
+
 <body>
     <div id="ebazar-layout" class="theme-blue">
 
         <!-- main body area -->
         <div class="main p-2 py-3 p-xl-5 ">
-            
+
             <!-- Body: Body -->
             <div class="body d-flex p-0 p-xl-5">
                 <div class="container-xxl">
@@ -41,7 +43,7 @@
                         <div class="col-lg-6 d-flex justify-content-center align-items-center border-0 rounded-lg auth-h100">
                             <div class="w-100 p-3 p-md-5 card border-0 shadow-sm" style="max-width: 32rem;">
                                 <!-- Form -->
-                                <form class="row g-1 p-3 p-md-4">
+                                <form class="row g-1 p-3 p-md-4" action="index.php?action=login" method="POST">
                                     <div class="col-12 text-center mb-5">
                                         <h1>Connectez-vous</h1>
                                         <span>Free access to our dashboard.</span>
@@ -58,7 +60,7 @@
                                     <div class="col-12">
                                         <div class="mb-2">
                                             <label class="form-label">Adresse Email</label>
-                                            <input type="email" class="form-control form-control-lg" placeholder="nom@example.com">
+                                            <input type="email" name="email" class="form-control form-control-lg" placeholder="nom@example.com">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -69,7 +71,7 @@
                                                     <a class="text-secondary" href="auth-password-reset.html">Mot de passe oublie ?</a>
                                                 </span>
                                             </div>
-                                            <input type="password" class="form-control form-control-lg" placeholder="***************">
+                                            <input type="password" name="password" class="form-control form-control-lg" placeholder="***************">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -81,18 +83,18 @@
                                         </div>
                                     </div>
                                     <div class="col-12 text-center mt-4">
-                                        <a href="index.html" class="btn btn-lg btn-block btn-light lift text-uppercase" atl="signin">Se connecter</a>
+                                        <button type="submit" class="btn btn-lg btn-block btn-light lift text-uppercase" atl="signin">Se connecter</button>
                                     </div>
                                     <div class="col-12 text-center mt-4">
                                         <span>Vous n'avez pas encore de compte ? <a href="auth-signup.html" class="text-danger">Sign up here</a></span>
                                     </div>
                                 </form>
                                 <!-- End Form -->
-                                
+
                             </div>
                         </div>
                     </div> <!-- End Row -->
-                    
+
                 </div>
             </div>
 
@@ -105,4 +107,5 @@
 </body>
 
 <!-- Mirrored from pixelwibes.com/template/ebazar/html/dist/ui-elements/auth-signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Aug 2025 13:38:07 GMT -->
+
 </html>
