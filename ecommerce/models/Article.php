@@ -192,7 +192,7 @@ LIMIT ?, ?
         // Voici quelques cas d'utilisation typiques : Affichage de Profil, Contrôle d'Accès
         // Édition de l'utilisateur 
         //  */
-        $stmt = $this->db->prepare("SELECT article.name, article.id, article.description, article.price, article.location, article.image_url, article.image_1, article.image_2, article.image_3, article.location, article.quantity, article.category_id, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id WHERE article.id = ?");
+        $stmt = $this->db->prepare("SELECT article.name, article.point, article.id, article.description, article.price, article.location, article.image_url, article.image_1, article.image_2, article.image_3, article.location, article.quantity, article.category_id, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id WHERE article.id = ?");
 
         $stmt->bind_param("i", $id); // "i" signifie que le paramètre est un entier.
         $stmt->execute();

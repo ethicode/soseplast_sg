@@ -90,19 +90,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="product-price">
-                                                        <h6 class="price-title fw-bold">Estimatif</h6>
-                                                        <p class="sale-price"><?php echo $article['price']?></p>
+                                                        <h6 class="price-title fw-bold">Point</h6>
+                                                        <p class="sale-price"><?php echo $article['point']?></p>
                                                         <!-- <p class="regular-price text-danger">$ 179 USD</p> -->
                                                     </div>
                                                     <p><?php echo $article['description']?></p>
                                                     <div class="product-btn mb-5">
                                                         <div class="d-flex flex-wrap">
-                                                            <div class="mt-2 mt-sm-0  me-1">
-                                                                <div class="input-group">
-                                                                    <input type="number" class="form-control" placeholder="1" min="1" max="5">
-                                                                    <span class="input-group-text"><i class="fa fa-sort"></i></span>
-                                                                </div>
-                                                            </div>
                                                             <?php if (isset($_SESSION["soseplast_user_id"])): ?>
                                                         <?php if ($command): ?>
                                                             <button type="button" class="btn text-white fw-bold waves-effect waves-light btn-danger" onclick="confirmCancelReservation('<?php echo $article["id"]; ?>')">Annuler la réservation</button>
@@ -118,7 +112,7 @@
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h4 class="modal-title text-dark fw-bold" id="myModalLabel">Réserver cet article<?php echo $_SESSION["soseplast_user_id"] ?></h4>
+                                                                        <h4 class="modal-title text-dark fw-bold" id="myModalLabel">Réserver cet article</h4>
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                             aria-hidden="true"></button>
                                                                     </div>

@@ -100,15 +100,9 @@ class CommandController
         require_once('views/article/edit_article_form.php');
     }
 
-    public function addUserForm()
-    {
-        require_once('views/user_form.php');
-    }
-
     public function addCommandForm()
     {
-        $categories = $this->modelCategory->getAllCategory();
-        require_once('views/article/add_article_form.php');
+        
     }
 
     public function showForSaleCommands()
