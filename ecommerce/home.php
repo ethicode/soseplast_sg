@@ -117,11 +117,11 @@
                             <div class="row g-3 mb-3 row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-3">
                                 <?php foreach ($articles as $article): ?>
                                     <div class="col">
-                                        <div class="card h-100">
+                                        <div class="card h-100" style="pointer-events: <?php echo $article['is_ordered'] == 1 ? 'none' : 'auto'; ?>; opacity: <?php echo $article['is_ordered'] == 1 ? '0.6' : '1'; ?>;">
                                             <div class="product">
                                                 <div class="product-image">
                                                     <div class="product-item active">
-                                                        <a href="index.php?action=detailArticle&id=<?php echo $article["id"] ?>">
+                                                        <a class="stretched-link" href="index.php?action=detailArticle&id=<?php echo $article["id"] ?>">
                                                             <img src="../inventory/<?php echo $article["image_url"] ?>" alt="product" class="img-fluid w-100">
                                                         </a>
                                                     </div>
@@ -130,10 +130,15 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content p-3">
-                                                    <span class="rating mb-2 d-block fw-bold fs-5 text-black"><i class="icofont-star text-warning"></i><?php echo $article["price"] ?> (<?php echo $article["quantity"] ?>)</span>
+                                                    <span class="rating mb-2 d-block fw-bold fs-5 text-black"><i class="icofont-money-bag text-danger"></i><?php echo $article["point"] ?> </span>
                                                     <a href="product-detail.html" class="fw-bold"><?php echo $article["name"] ?> </a>
                                                     <p class="text-muted"><?php echo substr($article["description"], 0, 90) . "..."; ?></p>
-                                                    <button type="button" class="btn waves-effect waves-light btn-danger text-white fw-bold" data-bs-toggle="modal" data-bs-target="#command<?php echo $article["id"] ?>">Commander</button>
+                                                    <!-- <button type="button" class="btn waves-effect waves-light btn-danger text-white fw-bold" data-bs-toggle="modal" data-bs-target="#command<?php echo $article["id"] ?>">Commander</button> -->
+                                                    <?php if ($article['is_ordered'] == 1): ?>
+                                                        <p>déjà commandé par un utilisateur</p>
+                                                    <?php else: ?>
+                                                        <button type="button" class="btn waves-effect waves-light btn-danger text-white fw-bold" >Disponible à la vente</button>
+                                                    <?php endif; ?>
                                                     <div id="command<?php echo $article["id"] ?>" class="modal in" tabindex="-1" role="dialog"
                                                         aria-labelledby="myModalLabel" aria-hidden="true">
                                                         <form action="index.php?action=addCommand" method="POST" class="form-horizontal form-material">
