@@ -1,16 +1,22 @@
 <?php
 require_once('models/Command.php');
 require_once('models/Category.php');
+require_once('models/User.php');
+require_once('models/Article.php');
 
 class CommandController
 {
     private $commandModel;
     private $categoryModel;
+    private $modelUser;
+    private $articleModel;
 
     public function __construct()
     {
+        $this->modelUser = new userModel();
         $this->commandModel = new Command();
         $this->categoryModel = new Category();
+        $this->articleModel = new Article();
     }
 
     public function addCommand()
@@ -18,10 +24,17 @@ class CommandController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $article_id = $_POST['article_id'];
             $user_id = $_POST['user_id'];
+            $user = $this->modelUser->getUserById($user_id);
+            $article = $this->articleModel->getArticleById($article_id);
+            if($article['point'] > $user['point']){
+                $_SESSION['error'] = "Vous n'avez pas assez de points pour commander cet article.";
+                header('Location: index.php?action=detailArticle&id=' . $article_id);
+                exit();
+            }
             $this->commandModel->addCommand($article_id, $user_id);
         }
         // header('Location: index.php?action=commands');
-        header('Location: index.php?action=detailArticle&id='.$article_id);
+        header('Location: index.php?action=detailArticle&id=' . $article_id);
     }
 
     public function showAllCommands()
@@ -100,10 +113,7 @@ class CommandController
         require_once('views/article/edit_article_form.php');
     }
 
-    public function addCommandForm()
-    {
-        
-    }
+    public function addCommandForm() {}
 
     public function showForSaleCommands()
     {
@@ -154,13 +164,13 @@ class CommandController
     public function deleteCommand()
     {
 
-        $user_id = null; 
+        $user_id = null;
         if (isset($_SESSION["soseplast_user_id"])) {
             $user_id = $_SESSION["soseplast_user_id"];
         }
-        
+
         $article_id = $_GET['id'];
         $this->commandModel->deleteCommand($article_id, $user_id);
-        header('Location: index.php?action=detailArticle&id='.$article_id);
+        header('Location: index.php?action=detailArticle&id=' . $article_id);
     }
 }

@@ -62,7 +62,7 @@ class UserModel {
         Voici quelques cas d'utilisation typiques : Affichage de Profil, Contrôle d'Accès
         Édition de l'utilisateur 
          */   
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE id = ?");
+        $stmt = $this->db->prepare("SELECT * FROM user WHERE id = ?");
         $stmt->bind_param("i", $id); // "i" signifie que le paramètre est un entier.
         $stmt->execute();
         $result = $stmt->get_result();
