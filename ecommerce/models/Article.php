@@ -34,13 +34,26 @@ class Article
     }
 
     public function getForSaleArticlesByPagination($calc_page, $num_results_on_page)
-    {
-        $stmt = $this->db->prepare("SELECT article.name, article.id, article.description, article.location, article.for_sale, article.price, article.quantity, article.image_url, article.created_at, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id WHERE article.for_sale = true ORDER BY article.id DESC  LIMIT ?,?;");
-        $stmt->bind_param('ii', $calc_page, $num_results_on_page); // "i" signifie que le paramètre est un entier.
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
+{
+    $stmt = $this->db->prepare("
+        SELECT article.name, article.id, article.description, article.location, article.for_sale, 
+               article.price, article.quantity, article.image_url, article.created_at, 
+               category.name as category_name 
+        FROM article
+        LEFT JOIN category ON article.category_id = category.id
+        LEFT JOIN command ON article.id = command.article_id 
+        WHERE article.for_sale = true 
+          AND (command.article_id IS NULL OR command.is_validated IS NULL)
+        ORDER BY article.id DESC
+        LIMIT ?, ?
+    ");
+    
+    $stmt->bind_param('ii', $calc_page, $num_results_on_page); // "i" signifie que le paramètre est un entier.
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
 
     public function getAllArticlesToSell()
     {
