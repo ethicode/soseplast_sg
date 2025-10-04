@@ -26,14 +26,36 @@ class CommandController
             $user_id = $_POST['user_id'];
             $user = $this->modelUser->getUserById($user_id);
             $article = $this->articleModel->getArticleById($article_id);
-            if($article['point'] > $user['point']){
+            if ($article['point'] > $user['point']) {
                 $_SESSION['error'] = "Vous n'avez pas assez de points pour commander cet article.";
                 header('Location: index.php?action=detailArticle&id=' . $article_id);
                 exit();
+            } else {
+                // Deduct points from user
+                $new_point = $user['point'] - $article['point'];
+                $this->modelUser->updateUserPoints($user_id, $new_point);
             }
             $this->commandModel->addCommand($article_id, $user_id);
         }
         // header('Location: index.php?action=commands');
+        header('Location: index.php?action=detailArticle&id=' . $article_id);
+    }
+
+    public function annulerMonCommande()
+    {
+
+        $user_id = null;
+        if (isset($_SESSION["soseplast_user_id"])) {
+            $user_id = $_SESSION["soseplast_user_id"];
+        }
+
+        $article_id = $_GET['id'];
+        $user = $this->modelUser->getUserById($user_id);
+        $article = $this->articleModel->getArticleById($article_id);
+        $new_point = $user['point'] + $article['point'];
+        $this->modelUser->updateUserPoints($user_id, $new_point);
+
+        $this->commandModel->deleteCommand($article_id, $user_id);
         header('Location: index.php?action=detailArticle&id=' . $article_id);
     }
 

@@ -77,7 +77,7 @@
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2">
-                                    <button class="btn btn-lg btn-danger text-white fw-bold" type="button">TOTAL POINT: <?php echo $point["points"] ?></button>
+                                    <button class="btn btn-lg btn-danger text-white fw-bold" type="button">TOTAL POINT: <?php echo $user["point"] ?></button>
                                 </div>
                             </div>
                             <!-- <div class="card mt-3">

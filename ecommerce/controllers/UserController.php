@@ -110,7 +110,7 @@ class UserController
         $id = $_SESSION['soseplast_user_id'];
         $user = $this->userModel->getUserById($id);
         $commands = $this->commandModel->myCommands($id);
-        $point = $this->pointModel->getPointByUser($id);
+        $point = $user['point'];
         require_once('mon_compte.php');
     }
 

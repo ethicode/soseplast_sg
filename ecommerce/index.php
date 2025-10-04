@@ -134,6 +134,13 @@ switch ([$action, $role]) {
     case ['deleteCommand', 'Collaborateur']:
         $commandController->deleteCommand();
         break;
+
+    case ['annulerCommande', 'Administrateur']:
+    case ['annulerCommande', 'Utilisateur']:
+    case ['annulerCommande', 'Collaborateur']:
+        $commandController->annulerMonCommande();
+        break;
+
     case ['demandes', 'Administrateur']:
         $RequestController->showAllRequests();
         break;
