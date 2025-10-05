@@ -79,21 +79,11 @@
                                                         <i class="fa fa-star text-warning"></i>
                                                         <i class="fa fa-star text-warning"></i>
                                                         <i class="fa fa-star text-warning"></i>
-                                                        <span class="text-muted ms-3">(449 customer review)</span>
-                                                    </div>
-                                                    <div class="product-select-wrapper flex-wrap">
-                                                        <div class="select-item">
-                                                            <h6 class="select-title fw-bold">Selectionner une couleur</h6>
-                                                            <ul class="color-select" id="select-color-1">
-                                                                <li style="background-color: #EFEFEF;" class="active"></li>
-                                                                <li style="background-color: #FAE5EC;"></li>
-                                                                <li style="background-color: #4C4C4C;"></li>
-                                                            </ul>
-                                                        </div>
+                                                        <!-- <span class="text-muted ms-3">(449 customer review)</span> -->
                                                     </div>
                                                     <div class="product-price">
                                                         <h6 class="price-title fw-bold">Point</h6>
-                                                        <p class="sale-price"><?php echo $article['point'] ?></p>
+                                                        <p class="sale-price"><i class="icofont-money-bag text-danger"></i><?php echo $article['point'] ?></p>
                                                         <!-- <p class="regular-price text-danger">$ 179 USD</p> -->
                                                     </div>
                                                     <p><?php echo $article['description'] ?></p>

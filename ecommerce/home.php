@@ -90,23 +90,32 @@
                                 <div class="card mb-3">
                                     <div class="price-range-block">
                                         <div class="filter-title">
-                                            <a class="title" data-bs-toggle="collapse" href="#pricingTwo" role="button" aria-expanded="false">Fourchette de prix</a>
+                                            <a class="title" data-bs-toggle="collapse" href="#pricingTwo" role="button" aria-expanded="false">FILTRER</a>
                                         </div>
                                         <div class="collapse show" id="pricingTwo">
                                             <div class="price-range">
                                                 <div class="price-amount flex-wrap">
-                                                    <div class="amount-input mt-1">
-                                                        <label class="fw-bold">Prix Minimum</label>
-                                                        <input type="number" id="minAmount2" class="form-control"
-                                                            value="<?= htmlspecialchars($_GET['min'] ?? '') ?>">
+                                                    <div class="amount-input mt-1 pe-2">
+                                                        <label class="fw-bold">Point Maximum</label>
+                                                        <select class="form-select" aria-label="Default select example">
+                                                            <option selected value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
                                                     </div>
-                                                    <div class="amount-input mt-1">
-                                                        <label class="fw-bold">Prix Maximum</label>
-                                                        <input type="number" id="maxAmount2" class="form-control"
-                                                            value="<?= htmlspecialchars($_GET['max'] ?? '') ?>">
+                                                    <div class="amount-input mt-1 ps-2">
+                                                        <label class="fw-bold">Point Maximum</label>
+                                                        <select class="form-select" aria-label="Default select example">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option selected value="5">5</option>
+                                                        </select>
                                                     </div>
                                                 </div>
-                                                <div id="slider-range2" class="slider-range noUi-target noUi-ltr noUi-horizontal noUi-txt-dir-ltr"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -137,7 +146,7 @@
                                                     <?php if ($article['is_ordered'] == 1): ?>
                                                         <p>déjà commandé par un utilisateur</p>
                                                     <?php else: ?>
-                                                        <button type="button" class="btn waves-effect waves-light btn-danger text-white fw-bold" >Disponible à la vente</button>
+                                                        <button type="button" class="btn waves-effect waves-light btn-danger text-white fw-bold">Disponible à la vente</button>
                                                     <?php endif; ?>
                                                     <div id="command<?php echo $article["id"] ?>" class="modal in" tabindex="-1" role="dialog"
                                                         aria-labelledby="myModalLabel" aria-hidden="true">
@@ -307,20 +316,6 @@
     });
 </script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const minInput = document.getElementById('minAmount2');
-        const maxInput = document.getElementById('maxAmount2');
 
-        function redirect() {
-            const min = minInput.value || 0;
-            const max = maxInput.value || 0;
-            window.location.href = `/filter?min=${min}&max=${max}`;
-        }
-
-        minInput.addEventListener('change', redirect);
-        maxInput.addEventListener('change', redirect);
-    });
-</script>
 
 </html>
