@@ -102,7 +102,7 @@ class UserController
 
     public function signForm()
     {
-        require_once('user/signin_form.php');
+        require_once('user/auth-signup.php');
     }
 
     public function myAccount()

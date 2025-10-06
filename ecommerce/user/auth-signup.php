@@ -2,22 +2,25 @@
 <html class="no-js" lang="en" dir="ltr">
 
 <!-- Mirrored from pixelwibes.com/template/ebazar/html/dist/ui-elements/auth-signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Aug 2025 13:38:11 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>::eBazar:: Signup </title>
+    <title>SOSEPLAST </title>
     <link rel="icon" href="../favicon.ico" type="image/x-icon"> <!-- Favicon-->
 
     <!-- project css file  -->
     <link rel="stylesheet" href="../assets/css/ebazar.style.min.css">
 </head>
+
 <body>
     <div id="ebazar-layout" class="theme-blue">
 
         <!-- main body area -->
-        <div class="main p-2 py-3 p-xl-5">
-            
+        <div class="main p-2">
+            <?php require 'sections/header.php' ?>
+
             <!-- Body: Body -->
             <div class="body d-flex p-0 p-xl-5">
                 <div class="container-xxl">
@@ -27,9 +30,6 @@
                             <div style="max-width: 25rem;">
                                 <div class="text-center mb-5">
                                     <i class="bi bi-bag-check-fill  text-primary" style="font-size: 90px;"></i>
-                                </div>
-                                <div class="mb-5">
-                                    <h2 class="color-900 text-center">A few clicks is all it takes.</h2>
                                 </div>
                                 <!-- Image block -->
                                 <div class="">
@@ -41,62 +41,47 @@
                         <div class="col-lg-6 d-flex justify-content-center align-items-center border-0 rounded-lg auth-h100">
                             <div class="w-100 p-3 p-md-5 card border-0 shadow-sm" style="max-width: 32rem;">
                                 <!-- Form -->
-                                <form class="row g-1 p-3 p-md-4">
+                                <form class="row g-1 p-3 p-md-4" action="index.php?action=register" method="POST">
                                     <div class="col-12 text-center mb-5">
-                                        <h1>Create your account</h1>
-                                        <span>Free access to our dashboard.</span>
+                                        <h1>Créer un compte</h1>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <div class="mb-2">
-                                            <label class="form-label">Full name</label>
-                                            <input type="email" class="form-control form-control-lg" placeholder="John">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="mb-2">
-                                            <label class="form-label">&nbsp;</label>
-                                            <input type="email" class="form-control form-control-lg" placeholder="Parker">
+                                            <label class="form-label">Nom d'utilisateur</label>
+                                            <input type="email"name="name" class="form-control form-control-lg" placeholder="Moussa">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-2">
-                                            <label class="form-label">Email address</label>
-                                            <input type="email" class="form-control form-control-lg" placeholder="name@example.com">
+                                            <label class="form-label"> Adresse Email  </label>
+                                            <input name="email" type="email" class="form-control form-control-lg" placeholder="nom@example.com">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-2">
-                                            <label class="form-label">Password</label>
-                                            <input type="email" class="form-control form-control-lg" placeholder="8+ characters required">
+                                            <label class="form-label">Mot de passe</label>
+                                            <input type="email" name="password" class="form-control form-control-lg" placeholder="4+ characters required">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-2">
-                                            <label class="form-label">Confirm password</label>
-                                            <input type="email" class="form-control form-control-lg" placeholder="8+ characters required">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                I accept the <a href="#" title="Terms and Conditions" class="text-secondary">Terms and Conditions</a>
-                                            </label>
+                                            <label class="form-label">Confirmer le mot de passe</label>
+                                            <input name="password2" type="email" class="form-control form-control-lg" placeholder="4+ characters required">
                                         </div>
                                     </div>
                                     <div class="col-12 text-center mt-4">
-                                        <a href="auth-signin.html" class="btn btn-lg btn-block btn-light lift text-uppercase" alt="SIGNUP">SIGN UP</a>
+                                        <a href="auth-signin.html" class="btn btn-lg btn-block btn-danger text-white fw-bold lift text-uppercase" alt="SIGNUP">VALIDER</a>
                                     </div>
                                     <div class="col-12 text-center mt-4">
-                                        <span>Already have an account? <a href="auth-signin.html" title="Sign in" class="text-secondary">Sign in here</a></span>
+                                        <span>Vous avez déjà un compte ? <a href="index.php?action=loginForm" title="Sign in" class="text-danger">Identifiez-vous</a></span>
                                     </div>
                                 </form>
                                 <!-- End Form -->
-                                
+
                             </div>
                         </div>
                     </div> <!-- End Row -->
-                    
+
                 </div>
             </div>
 
@@ -109,4 +94,5 @@
 </body>
 
 <!-- Mirrored from pixelwibes.com/template/ebazar/html/dist/ui-elements/auth-signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Aug 2025 13:38:11 GMT -->
+
 </html>

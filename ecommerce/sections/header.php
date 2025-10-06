@@ -9,11 +9,11 @@
             <?php if (!isset($_SESSION["soseplast_user_id"])): ?>
                 <div class="h-right d-flex align-items-center mr-lg-0 order-1">
                     <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover me-5">
-                        <div class="u-info me-2">
+                        <!-- <div class="u-info me-2">
                             <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">Mon Compte</span></p>
-                        </div>
-                        <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
-                            <i class="icofont-user fs-4"></i>
+                        </div> -->
+                        <a class="nav-link dropdown-toggle pulse p-0 fw-bold" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
+                           Mon Compte <i class="icofont-user fs-4"></i>
                         </a>
                         <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
                             <div class="card border-0 w280">
@@ -107,7 +107,7 @@
                             </div> -->
                     <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover me-5">
                         <div class="u-info me-2">
-                            <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">Mon Compte</span></p>
+                            <!-- <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">Mon Compte</span></p> -->
                             <?php if (isset($_SESSION["soseplast_user_id"])): ?>
                                 <?php if ($_SESSION["role"] === "Collaborateur"): ?>
                                     <li class="nav-item"> <a class="nav-link  d-lg-block d-md-block waves-effect waves-dark text-white" href="index.php?action=mes-commandes"> <small>Mes commandes</small></a> </li>
@@ -115,8 +115,8 @@
                             <?php endif ?>
                             <!-- <small>Admin Profile</small>    -->
                         </div>
-                        <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
-                            <i class="icofont-user fs-4"></i>
+                        <a class="nav-link dropdown-toggle pulse p-0 fw-bold" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
+                            Mon Compte <i class="icofont-user fs-4"></i>
                         </a>
                         <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
                             <div class="card border-0 w280">

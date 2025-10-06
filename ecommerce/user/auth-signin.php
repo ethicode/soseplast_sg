@@ -18,7 +18,8 @@
     <div id="ebazar-layout" class="theme-blue">
 
         <!-- main body area -->
-        <div class="main p-2 py-3 p-xl-5 ">
+        <div class="main">
+            <?php require 'sections/header.php' ?>
 
             <!-- Body: Body -->
             <div class="body d-flex p-0 p-xl-5">
@@ -31,7 +32,7 @@
                                     <i class="bi bi-bag-check-fill  text-primary" style="font-size: 90px;"></i>
                                 </div>
                                 <div class="mb-5">
-                                    <h2 class="color-900 text-center">A few clicks is all it takes.</h2>
+                                    <!-- <h2 class="color-900 text-center">A few clicks is all it takes.</h2> -->
                                 </div>
                                 <!-- Image block -->
                                 <div class="">
@@ -46,16 +47,15 @@
                                 <form class="row g-1 p-3 p-md-4" action="index.php?action=login" method="POST">
                                     <div class="col-12 text-center mb-5">
                                         <h1>Connectez-vous</h1>
-                                        <span>Free access to our dashboard.</span>
                                     </div>
                                     <div class="col-12 text-center mb-4">
-                                        <a class="btn btn-lg btn-light btn-block" href="#">
+                                        <!-- <a class="btn btn-lg btn-light btn-block" href="#">
                                             <span class="d-flex justify-content-center align-items-center">
                                                 <img class="avatar xs me-2" src="assets/images/google.svg" alt="Image Description">
                                                 Sign in with Google
                                             </span>
-                                        </a>
-                                        <span class="dividers text-muted mt-4">OU</span>
+                                        </a> -->
+                                        <!-- <span class="dividers text-muted mt-4">OU</span> -->
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-2">
@@ -68,25 +68,17 @@
                                             <div class="form-label">
                                                 <span class="d-flex justify-content-between align-items-center">
                                                     Mot de passe
-                                                    <a class="text-secondary" href="auth-password-reset.html">Mot de passe oublie ?</a>
+                                                    <!-- <a class="text-secondary" href="auth-password-reset.html">Mot de passe oublie ?</a> -->
                                                 </span>
                                             </div>
                                             <input type="password" name="password" class="form-control form-control-lg" placeholder="***************">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                Remember me
-                                            </label>
                                         </div>
                                     </div>
                                     <div class="col-12 text-center mt-4">
                                         <button type="submit" class="btn btn-lg btn-block btn-light lift text-uppercase" atl="signin">Se connecter</button>
                                     </div>
                                     <div class="col-12 text-center mt-4">
-                                        <span>Vous n'avez pas encore de compte ? <a href="auth-signup.html" class="text-danger">Sign up here</a></span>
+                                        <span>Vous n'avez pas encore de compte ? <a href="index.php?action=signinForm" class="text-danger">Cliquer ici ! </a></span>
                                     </div>
                                 </form>
                                 <!-- End Form -->
