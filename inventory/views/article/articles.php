@@ -185,6 +185,7 @@
                                             <tbody>
                                                 <?php foreach ($articles as $article): ?>
                                                     <tr>
+                                                        <td class=""><?php echo $article["id"]; ?></td>
                                                         <td>
                                                             <a class="text-dark" href="?action=detailArticleAdmin&id=<?php echo $article["id"]; ?>"><?php echo $article["name"]; ?></a>
                                                         </td>

@@ -28,14 +28,7 @@
                 </div>
             <?php else: ?>
                 <div class="h-right d-flex align-items-center mr-lg-0 order-1">
-            <button type="button" class="btn btn-dark fw-bold text-white position-relative me-5">
-                Mes points
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    <?php echo $user['point']; ?>
-                    <span class="visually-hidden">Mes points</span>
-                </span>
-            </button>
-                    <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover me-5">
+                    <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover me-3">
                         <div class="u-info me-2">
                             <!-- <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">Mon Compte</span></p> -->
                             <?php if (isset($_SESSION["soseplast_user_id"])): ?>
@@ -45,8 +38,8 @@
                             <?php endif ?>
                             <!-- <small>Admin Profile</small>    -->
                         </div>
-                        <a class="nav-link dropdown-toggle pulse p-0 fw-bold" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
-                            Mon Compte <i class="icofont-user fs-4"></i>
+                        <a class="btn btn-light dropdown-toggle text fw-bold" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
+                            Mon Compte <i class="icofont-user fs-6"></i>
                         </a>
                         <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
                             <div class="card border-0 w280">
@@ -74,6 +67,14 @@
                             </div>
                         </div>
                     </div>
+                    <button type="button" class="btn btn-danger fw-bold text-white position-relative me-4">
+                        Mes points
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-black">
+                            <?php echo $user['point']; ?>
+                            <span class="visually-hidden">Mes points</span>
+                        </span>
+                    </button>
+                    <a href="/soseplast/inventory/index.php?action=articles" class="btn btn-danger fw-bold text-white position-relative me-5">Admin</a>
                 </div>
             <?php endif ?>
             <!-- menu toggler -->

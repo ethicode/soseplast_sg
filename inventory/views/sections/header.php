@@ -31,8 +31,8 @@
                 <?php if (isset($_SESSION["role"])): ?>
                     <?php if ($_SESSION["role"] === "Administrateur"): ?>
                         <li class="nav-item dropdown u-pro">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="hidden-md-down text-white">Admin &nbsp;<i class="ti-angle-down"></i></span> </a>
-                            <div class="dropdown-menu dropdown-menu-end animated flipInY">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button class="btn btn-dark hidden-md-down text-white fw-bold">Admin &nbsp;<i class="ti-angle-down"></i></button> </a>
+                            <div class="dropdown-menu dropdown-menu-end flipInY">
                                 <a href="index.php?action=dashboard" class="dropdown-item"><i class="ti-wallet"></i> Dashboard</a>
                                 <a href="index.php?action=monCompte" class="dropdown-item"><i class="ti-wallet"></i> Mon compte</a>
                                 <a href="index.php?action=logout" class="dropdown-item"><i class="fa fa-power-off"></i> Se déconnecter</a>
