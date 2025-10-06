@@ -19,7 +19,7 @@ class Article
 
     public function getAllArticles()
     {
-        $sql = "SELECT article.name, article.id, article.location, article.for_sale, article.price, article.quantity, article.image_url, article.created_at, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id ORDER BY article.id DESC;";
+        $sql = "SELECT article.name, article.id, article.point, article.location, article.for_sale, article.price, article.quantity, article.image_url, article.created_at, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id ORDER BY article.id DESC;";
         $result = $this->db->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
@@ -62,17 +62,17 @@ class Article
     //     return $result->fetch_all(MYSQLI_ASSOC);
     // }
 
-   public function selectCount()
-{
-    $sql = "SELECT COUNT(*) as total FROM article WHERE for_sale = true";
-    if ($result = $this->db->query($sql)) {
-        $row = $result->fetch_assoc();
-        return (int) $row['total'];
-    } else {
-        // Log ou gestion de l'erreur SQL
-        return 0;
+    public function selectCount()
+    {
+        $sql = "SELECT COUNT(*) as total FROM article WHERE for_sale = true";
+        if ($result = $this->db->query($sql)) {
+            $row = $result->fetch_assoc();
+            return (int) $row['total'];
+        } else {
+            // Log ou gestion de l'erreur SQL
+            return 0;
+        }
     }
-}
 
 
     public function selectCountSell()
@@ -134,22 +134,22 @@ class Article
     {
         // Prépare la requête SQL pour insérer un nouvel utilisateur.
         // Utilise des marqueurs de position "?" pour les valeurs à insérer.
-        $stmt = $this->db->prepare("INSERT INTO article (name, description, category_id, quantity, location, image_url, image_1, image_2, image_3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO article (name, description, category_id, point, quantity, location, image_url, image_1, image_2, image_3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         // Vérifie si la préparation de la requête a échoué et, dans ce cas, affiche l'erreur MySQL
         if ($stmt === false) {
             die("MySQL Error: " . $this->db->error);
         }
         // Lie les variables aux marqueurs de position dans la requête préparée.
-        $stmt->bind_param("sssssssss", $name, $description, $category_id, $quantity, $location, $image_url, $image_1, $image_2, $image_3); // "sss" signifie que les 7 paramètres sont des chaînes de caractères.
+        $stmt->bind_param("ssssssssss", $name, $description, $category_id, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3); // "sss" signifie que les 7 paramètres sont des chaînes de caractères.
         $stmt->execute();  // Exécute la requête préparée.
         $stmt->close(); // Ferme l'objet de requête préparée.
     }
 
-    public function saveArticle($name, $description, $category_id, $quantity, $price, $location, $image_url, $image_1, $image_2, $image_3, $article_id)
+    public function saveArticle($name, $description, $category_id,$point, $quantity, $price, $location, $image_url, $image_1, $image_2, $image_3, $article_id)
     {
-        $stmt = $this->db->prepare("UPDATE article SET name = ?, description = ?, category_id = ?, quantity = ?, price = ?, location = ?, image_url = ?, image_1 = ?, image_2 = ?, image_3 = ? WHERE id = ?");
-        $stmt->bind_param("ssiissssssi", $name, $description, $category_id, $quantity, $price, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
+        $stmt = $this->db->prepare("UPDATE article SET name = ?, description = ?, point = ?, category_id = ?, quantity = ?, price = ?, location = ?, image_url = ?, image_1 = ?, image_2 = ?, image_3 = ? WHERE id = ?");
+        $stmt->bind_param("ssiiissssssi", $name, $description, $category_id, $point, $quantity, $price, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
         $stmt->execute();
         $stmt->close();
     }
@@ -182,7 +182,7 @@ class Article
         // Voici quelques cas d'utilisation typiques : Affichage de Profil, Contrôle d'Accès
         // Édition de l'utilisateur 
         //  */
-        $stmt = $this->db->prepare("SELECT article.name, article.id, article.description, article.price, article.location, article.image_url, article.image_1, article.image_2, article.image_3, article.location, article.quantity, article.category_id, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id WHERE article.id = ?");
+        $stmt = $this->db->prepare("SELECT article.name, article.point, article.id, article.description, article.price, article.location, article.image_url, article.image_1, article.image_2, article.image_3, article.location, article.quantity, article.category_id, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id WHERE article.id = ?");
 
         $stmt->bind_param("i", $id); // "i" signifie que le paramètre est un entier.
         $stmt->execute();

@@ -174,8 +174,10 @@
                                             data-paging="true" data-paging-size="7">
                                             <thead>
                                                 <tr>
+                                                    <th class="d-none">Id</th>
                                                     <th>Libellé</th>
                                                     <th>Quantité</th>
+                                                    <th>Point</th>
                                                     <th>Etat</th>
                                                     <th>Catégorie</th>
                                                     <th>Emplacement</th>
@@ -185,11 +187,12 @@
                                             <tbody>
                                                 <?php foreach ($articles as $article): ?>
                                                     <tr>
-                                                        <td class=""><?php echo $article["id"]; ?></td>
+                                                        <td class="d-none"><?php echo $article["id"]; ?></td>
                                                         <td>
-                                                            <a class="text-dark" href="?action=detailArticleAdmin&id=<?php echo $article["id"]; ?>"><?php echo $article["name"]; ?></a>
+                                                            <a class="text-dark fw-bold" href="?action=detailArticleAdmin&id=<?php echo $article["id"]; ?>"><?php echo $article["name"]; ?></a>
                                                         </td>
                                                         <td><?php echo $article["quantity"]; ?></td>
+                                                        <td><?php echo $article["point"]; ?></td>
                                                         <?php if ($article["for_sale"] == true): ?>
                                                             <td><span class="label label-info">En cession</span> </td>
                                                         <?php else: ?>

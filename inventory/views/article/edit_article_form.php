@@ -110,6 +110,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="" class="col-2 col-form-label">Point</label>
+                                        <div class="col-10">
+                                            <input class="form-control" name="point" type="number" value="<?php echo $article["point"] ?>" id="">
+                                        </div>
+                                    </div>
+                                     <div class="form-group row">
                                         <label for="example-url-input" class="col-2 col-form-label">Quantité</label>
                                         <div class="col-10">
                                             <input class="form-control" name="quantity" type="number" value="<?php echo $article["quantity"] ?>" id="example-url-input">

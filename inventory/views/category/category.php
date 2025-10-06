@@ -120,41 +120,110 @@
                                     </div>
                                     <a  href="index.php?action=addArticleForm" type="button" class="btn btn-info btn-rounded float-end text-white">Ajouter un article</a>
                                     <div class="table-responsive">
-                                        <table id="demo-foo-addrow"
-                                            class="table no-wrap table-bordered m-t-30 table-hover contact-list"
+                                        <table  id="myTable"
+                                            class="table border table-striped m-t-30 table-hover"
                                             data-paging="true" data-paging-size="7">
                                             <thead>
                                                 <tr>
+                                                    <th class="d-none">Id</th>
                                                     <th>Libellé</th>
-                                                    <th>Emplacement</th>
-                                                    <th>Quantity</th>
+                                                    <th>Quantité</th>
+                                                    <th>Etat</th>
                                                     <th>Catégorie</th>
+                                                    <th>Emplacement</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($articles as $article): ?>
                                                     <tr>
+                                                        <td class="d-none"><?php echo $article["id"]; ?></td>
                                                         <td>
-                                                            <a href="?action=detailArticle&id=<?php echo $article["id"]; ?>"><?php echo $article["name"]; ?></a>
+                                                            <a class="text-dark" href="?action=detailArticleAdmin&id=<?php echo $article["id"]; ?>"><?php echo $article["name"]; ?></a>
                                                         </td>
-                                                        <td><?php echo $article["location"]; ?></td>
                                                         <td><?php echo $article["quantity"]; ?></td>
+                                                        <?php if ($article["for_sale"] == true): ?>
+                                                            <td><span class="label label-info">En cession</span> </td>
+                                                        <?php else: ?>
+                                                            <td> </td>
+                                                        <?php endif ?>
                                                         <td><span class="label label-primary"><?php echo $article["category_name"]; ?></span> </td>
+                                                        <td><?php echo $article["location"]; ?></td>
                                                         <td>
                                                             <div class="btn-group">
                                                                 <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                     Action
                                                                 </button>
                                                                 <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="javascript:void(0)">Mettre en vente</a>
+                                                                    <?php if ($article["for_sale"] == 0): ?>
+                                                                        <a class="dropdown-item" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#<?php echo 'miseEnVenteModal' . $article["id"] ?>">Mettre en cession</a>
+                                                                    <?php else: ?>
+                                                                        <a class="dropdown-item" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#<?php echo 'annulerVenteModal' . $article["id"] ?>">Annuler la cession</a>
+                                                                    <?php endif ?>
                                                                     <a class="dropdown-item" href="index.php?action=updatearticle&id=<?php echo $article["id"] ?>">Modifier</a>
-                                                                    <a class="dropdown-item" href="javascript:void(0)">Supprimer</a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
+                                                                    <a class="dropdown-item" href="javascript:void(0)" onclick="confirmDelete('<?php echo $article["id"]; ?>')">Supprimer</a>
+                                                                    <!-- <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item" href="javascript:void(0)">Separated link</a> -->
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <div class="modal" id="<?php echo 'miseEnVenteModal' . $article["id"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+                                                            <form method="POST" action="index.php?action=sellArticle">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h4 class="modal-title" id="exampleModalLabel1">Mise en vente</h4>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="form-group">
+                                                                                <label for="recipient-name" class="form-label">Titre de l'article:</label>
+                                                                                <input type="text" disabled value="<?php echo $article["name"]; ?>" class="form-control text-dark" id="recipient-name1">
+                                                                                <input type="hidden" name="article_id" value="<?php echo $article["id"]; ?>">
+                                                                                <input type="hidden" name="for_sale" value="1">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="message-text" class="form-label">Quantité:</label>
+                                                                                <input type="number" disabled value="<?php echo $article["quantity"]; ?>" name="quantity" class="form-control text-dark">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="message-text" class="form-label">Prix:</label>
+                                                                                <input type="number" value="<?php echo $article["price"]; ?>" autofocus name="price" class="form-control text-dark">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-default" data-bs-dismiss="modal">Fermer</button>
+                                                                            <button type="submit" class="btn btn-danger text-white">Enregistrer</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal" id="<?php echo 'annulerVenteModal' . $article["id"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+                                                            <form method="POST" action="index.php?action=sellArticle">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-body">
+                                                                            <div class="form-group">
+                                                                                <label for="recipient-name" class="form-label">Titre de l'article:</label>
+                                                                                <input type="hidden" name="article_id" value="<?php echo $article["id"]; ?>">
+                                                                                <input type="text" disabled value="<?php echo $article["name"]; ?>" class="form-control text-dark">
+                                                                                <input type="hidden" value="<?php echo $article["price"]; ?>" name="price" class="form-control text-dark">
+                                                                                <?php if ($article["for_sale"] == 0): ?>
+                                                                                    <input type="hidden" name="for_sale" value="1">
+                                                                                <?php else: ?>
+                                                                                    <input type="hidden" name="for_sale" value="0">
+                                                                                <?php endif ?>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-default" data-bs-dismiss="modal">Fermer</button>
+                                                                            <button type="submit" class="btn btn-danger text-white">Annuler la cession</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
                                                     </tr>
                                                 <?php endforeach ?>
                                             </tbody>

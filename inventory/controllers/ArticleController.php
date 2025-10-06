@@ -191,7 +191,8 @@ class ArticleController
             $category_id = $_POST['category'];
             $quantity = $_POST['quantity'];
             $location = $_POST['location'];
-            $this->articleModel->addArticle($name, $description, $category_id, $quantity, $location, $image_url, $image_1, $image_2, $image_3);
+            $point = $_POST['point'];
+            $this->articleModel->addArticle($name, $description, $category_id, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3);
         }
         header('Location: index.php?action=articles');
     }
@@ -204,6 +205,7 @@ class ArticleController
             $name = $_POST['name'];
             $description = $_POST['description'];
             $category_id = $_POST['category_id'];
+            $point = $_POST['point'];
             $quantity = $_POST['quantity'];
             $price = $_POST['price'];
             $location = $_POST['location'];
@@ -263,10 +265,10 @@ class ArticleController
             move_uploaded_file($_FILES["image_2"]["tmp_name"], $image_2);
             move_uploaded_file($_FILES["image_3"]["tmp_name"], $image_3);
 
-            $this->articleModel->saveArticle($name, $description, $category_id, $quantity, $price, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
+            $this->articleModel->saveArticle($name, $description, $category_id, $point, $quantity, $price, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
         }
         // header('Location: index.php?action=articles');
-        header('Location: index.php?action=detailArticleAdmin&id='.$article_id);
+        header('Location: index.php?action=detailArticleAdmin&id=' . $article_id);
     }
 
     public function editUser()
