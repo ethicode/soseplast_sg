@@ -62,13 +62,18 @@ class Article
     //     return $result->fetch_all(MYSQLI_ASSOC);
     // }
 
-    public function selectCount()
-    {
-        $sql = "SELECT id FROM article";
-        $result = $this->db->query($sql);
-        $rowcount = mysqli_num_rows($result);
-        return $rowcount;
+   public function selectCount()
+{
+    $sql = "SELECT COUNT(*) as total FROM article WHERE for_sale = true";
+    if ($result = $this->db->query($sql)) {
+        $row = $result->fetch_assoc();
+        return (int) $row['total'];
+    } else {
+        // Log ou gestion de l'erreur SQL
+        return 0;
     }
+}
+
 
     public function selectForSaleCount()
     {

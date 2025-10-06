@@ -114,7 +114,7 @@
                                                     <button type="button" class="btn btn-secondary text-white fw-bold" disabled>Déjà commandé par un utilisateur</button>
                                                 <?php else: ?>
                                                     <div class="d-grid gap-2">
-                                                    <a class="stretched-link btn waves-effect waves-light btn-danger text-white fw-bold" href="index.php?action=detailArticle&id=<?php echo $article["id"] ?>">Disponible</a>
+                                                        <a class="stretched-link btn waves-effect waves-light btn-danger text-white fw-bold" href="index.php?action=detailArticle&id=<?php echo $article["id"] ?>">Disponible</a>
                                                     </div>
                                                 <?php endif; ?>
                                             </div>
@@ -123,25 +123,27 @@
                                 <?php endforeach ?>
 
                             </div>
-                            <!-- <div class="row g-3 mb-3">
-                                <div class="col-md-12">
-                                    <nav class="justify-content-end d-flex">
-                                        <ul class="pagination">
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item active" aria-current="page">
-                                                <a class="page-link" href="#">2</a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">Next</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div> -->
+                            <?php if ($total_pages > 1): ?>
+                                <ul class="pagination">
+                                    <!-- Previous -->
+                                    <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
+                                        <a class="page-link text-danger" href="?page=<?= $page - 1 ?>">Previous</a>
+                                    </li>
+
+                                    <!-- Page numbers -->
+                                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                                        <li class="page-item <?= $page == $i ? 'active text-danger' : '' ?>">
+                                            <a class="page-link <?= $page == $i ? 'text-white' : '' ?>" href="?page=<?= $i ?>"><?= $i ?></a>
+                                        </li>
+                                    <?php endfor; ?>
+
+                                    <!-- Next -->
+                                    <li class="page-item <?= $page >= $total_pages ? 'disabled' : '' ?>">
+                                        <a class="page-link text-danger" href="?page=<?= $page + 1 ?>">Next</a>
+                                    </li>
+                                </ul>
+                            <?php endif; ?>
+
                         </div>
                     </div> <!-- Row end  -->
                 </div>

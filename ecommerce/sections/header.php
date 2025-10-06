@@ -53,8 +53,7 @@
                                 <div class="card-body pb-0">
                                     <div class="d-flex py-1">
                                         <div class="flex-fill ms-3">
-                                            <p class="mb-0"><span class="font-weight-bold">Massar</span></p>
-                                            <small class=""><?php echo $_SESSION["name"]; ?></small>
+                                            <p class="mb-0"><span class="font-weight-bold"><?php echo $_SESSION["name"]; ?></span></p>
                                         </div>
                                     </div>
 
@@ -64,8 +63,9 @@
                                 </div>
                                 <div class="list-group m-2 ">
                                     <?php if ($_SESSION["role"] === "Administrateur"): ?>
-                                        <a href="/soseplast/inventory/index.php?action=dashboard" class="list-group-item list-group-item-action border-0 "><i class="icofont-ui-user fs-5 me-3"></i>Gestion de stock</a>
+                                        <a href="/soseplast/inventory/index.php?action=dashboard" class="list-group-item list-group-item-action border-0 "><i class="icofont-navigation-menu  fs-5 me-3"></i>Gestion de stock</a>
                                     <?php endif ?>
+                                    <hr class="dropdown-divider border-dark">
                                     <a href="index.php?action=monCompte" class="list-group-item list-group-item-action border-0 "><i class="icofont-ui-user fs-5 me-3"></i>Mon compte</a>
                                     <a href="index.php?action=mes-commandes" class="list-group-item list-group-item-action border-0 "><i class="icofont-file-text fs-5 me-3"></i>Mes commandes</a>
                                     <a href="index.php?action=logout" class="list-group-item list-group-item-action border-0 "><i class="icofont-logout fs-5 me-3"></i>Se deconnecter </a>

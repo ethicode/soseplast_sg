@@ -26,16 +26,26 @@ class ShoppingController
 
     public function showAllArticles()
     {
+        $num_results_on_page = 3;
 
-        $total_pages = $this->articleModel->selectCount();
-        $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
-        $num_results_on_page = 12;
+        // Nombre total d'articles
+        $total_articles = $this->articleModel->selectCount(); // doit retourner un ENTIER
+
+        // Calcul du nombre total de pages
+        $total_pages = ceil($total_articles / $num_results_on_page);
+
+        // Page actuelle
+        $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+        $page = max(1, min($page, $total_pages)); // Sécurité : rester dans les bornes
+
         $calc_page = ($page - 1) * $num_results_on_page;
 
         $articles = $this->articleModel->getForSaleArticlesByPagination($calc_page, $num_results_on_page);
         $categories = $this->categoryModel->getAllCategory();
+
         require_once('views/shopping/home.php');
     }
+
 
     public function showDetailArticle()
     {
