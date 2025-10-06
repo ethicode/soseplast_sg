@@ -13,10 +13,28 @@ class Category {
         if ($this->db->connect_error) {
             die("Connection failed: " . $this->db->connect_error);
         }
+        $this->db->set_charset("utf8mb4");
     }
 
     public function getAllCategory() {
-        $sql = "SELECT category.id, category.name, COUNT(article.id) AS articles_count FROM category LEFT JOIN article ON category.id = article.category_id GROUP BY category.name;";
+        // $sql = "SELECT category.id, category.name, article.for_sale, COUNT(article.id) AS articles_count FROM category LEFT JOIN article ON category.id = article.category_id GROUP BY category.name WHERE article.for_sale = 1;";
+        $sql = "SELECT category.id, category.name, article.for_sale, COUNT(article.id) AS articles_count 
+        FROM category 
+        LEFT JOIN article ON category.id = article.category_id 
+        GROUP BY category.id;";
+
+        $result = $this->db->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllCategoryForSale() {
+        // $sql = "SELECT category.id, category.name, article.for_sale, COUNT(article.id) AS articles_count FROM category LEFT JOIN article ON category.id = article.category_id GROUP BY category.name WHERE article.for_sale = 1;";
+        $sql = "SELECT category.id, category.name, article.for_sale, COUNT(article.id) AS articles_count 
+        FROM category 
+        LEFT JOIN article ON category.id = article.category_id 
+        WHERE article.for_sale = 1 
+        GROUP BY category.id, category.name, article.for_sale;";
+
         $result = $this->db->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }

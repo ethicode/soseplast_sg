@@ -21,17 +21,25 @@ class Request {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getMyRequest($id) {
+        $stmt = $this->db->prepare("SELECT * FROM request WHERE user_id = ?");
+        $stmt->bind_param('i', $id); // "i" signifie que le paramètre est un entier.
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getRequestsByPagination($calc_page, $num_results_on_page)
     {
-        $stmt = $this->db->prepare("SELECT request.id, request.title, request.description, request.created_at, user.name FROM request LEFT JOIN user on request.user_id=user.id ORDER BY request.id DESC  LIMIT ?,?;");
-        $stmt->bind_param('ii', $calc_page, $num_results_on_page); // "i" signifie que le paramètre est un entier.
+        $stmt = $this->db->prepare("SELECT request.id, request.uuid, request.text_2, request.user_id, request.text_1, request.created_at, request.is_validated, user.name FROM request LEFT JOIN user on request.user_id=user.id ORDER BY request.id DESC;");
+        // $stmt->bind_param('ii', $calc_page, $num_results_on_page); // "i" signifie que le paramètre est un entier.
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function getAllRequestLimit5() {
-        $sql = "SELECT request.id, request.title, request.description, request.created_at, user.name FROM request LEFT JOIN user on request.user_id=user.id ORDER BY request.id DESC LIMIT 5";
+        $sql = "SELECT request.id, request.uuid, request.text_1, request.created_at, user.name FROM request LEFT JOIN user on request.user_id=user.id ORDER BY request.id DESC LIMIT 5";
         $result = $this->db->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
@@ -59,18 +67,15 @@ class Request {
         $stmt->close(); // Ferme l'objet de requête préparée.
     }
 
-    public function updateCategory($id, $username, $email) {
-        $stmt = $this->db->prepare("UPDATE category SET username = ?, email = ? WHERE id = ?");
-        $stmt->bind_param("ssi", $username, $email, $id);
+    public function validationRequest($is_validated, $request_id) {
+        $stmt = $this->db->prepare("UPDATE request SET is_validated = ? WHERE id = ?");
+        $stmt->bind_param("ii", $is_validated, $request_id);
         $stmt->execute();
         $stmt->close();
     }
 
     public function deleteRequest($id) {
-        // @param int $id L'ID de l'utilisateur à supprimer.
         $stmt = $this->db->prepare("DELETE FROM users WHERE id = ?");
-        // Lie la variable $id au marqueur de position dans la requête préparée.
-        // "i" signifie que le paramètre est un entier.
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $stmt->close();
@@ -78,13 +83,7 @@ class Request {
 
     
     public function getRequestById($id) {
-        /*
-        La fonction getUserById($id) est généralement utilisée lorsque vous avez besoin
-        d'obtenir des informations sur un utilisateur spécifique identifié par son ID.
-        Voici quelques cas d'utilisation typiques : Affichage de Profil, Contrôle d'Accès
-        Édition de l'utilisateur 
-         */   
-        $stmt = $this->db->prepare("SELECT * FROM category WHERE id = ?");
+        $stmt = $this->db->prepare("SELECT request.uuid, request.id, request.user_id, request.is_validated, request.text_1, request.text_2, request.text_3, user.email as user_email FROM request inner join user on request.user_id = user.id WHERE request.id = ?");
         $stmt->bind_param("i", $id); // "i" signifie que le paramètre est un entier.
         $stmt->execute();
         $result = $stmt->get_result();

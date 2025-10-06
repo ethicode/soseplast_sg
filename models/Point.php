@@ -17,6 +17,28 @@ class Point
         }
     }
 
+    public function getPointByUser($id)
+    {
+
+        $stmt = $this->db->prepare("SELECT * FROM points_history  WHERE user_id = ?");
+        $stmt->bind_param("i", $id); // "i" signifie que le paramètre est un entier.
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function addPoint($user_id, $points)
+    {
+        $stmt = $this->db->prepare("INSERT INTO points_history (user_id, points) VALUES (?, ?)");
+
+        if ($stmt === false) {
+            die("MySQL Error: " . $this->db->error);
+        }
+        $stmt->bind_param("is", $user_id, $points);
+        $stmt->execute(); 
+        $stmt->close(); 
+    }
+
     public function getAllArticles()
     {
         $sql = "SELECT article.name, article.id, article.location, article.quantity, article.image_url, article.created_at, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id ORDER BY article.id DESC;";
@@ -78,17 +100,6 @@ class Point
         return $rowcount;
     }
 
-    public function getPointByUser($id)
-    {
-
-        $stmt = $this->db->prepare("SELECT * FROM point_history  WHERE user_id = ?");
-        $stmt->bind_param("i", $id); // "i" signifie que le paramètre est un entier.
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $rowcount = mysqli_num_rows($result);
-        return $rowcount;
-    }
-
     public function searchArticles($search, $calc_page, $num_results_on_page)
     {
         $stmt = $this->db->prepare("SELECT article.name, article.id, article.location, article.quantity, article.image_url, article.created_at, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id WHERE article.name LIKE '%$search%' ORDER BY article.id DESC  LIMIT ?,?;");
@@ -96,23 +107,6 @@ class Point
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    // Ajoute un nouvel utilisateur à la table "users" de la base de données.
-    public function addArticle($name, $description, $category_id, $quantity, $location, $image_url, $image_1, $image_2, $image_3)
-    {
-        // Prépare la requête SQL pour insérer un nouvel utilisateur.
-        // Utilise des marqueurs de position "?" pour les valeurs à insérer.
-        $stmt = $this->db->prepare("INSERT INTO article (name, description, category_id, quantity, location, image_url, image_1, image_2, image_3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
-        // Vérifie si la préparation de la requête a échoué et, dans ce cas, affiche l'erreur MySQL
-        if ($stmt === false) {
-            die("MySQL Error: " . $this->db->error);
-        }
-        // Lie les variables aux marqueurs de position dans la requête préparée.
-        $stmt->bind_param("sssssssss", $name, $description, $category_id, $quantity, $location, $image_url, $image_1, $image_2, $image_3); // "sss" signifie que les 7 paramètres sont des chaînes de caractères.
-        $stmt->execute();  // Exécute la requête préparée.
-        $stmt->close(); // Ferme l'objet de requête préparée.
     }
 
     public function saveArticle($name, $description, $category_id, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id)

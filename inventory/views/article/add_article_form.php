@@ -106,6 +106,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="example-url-input" class="col-2 col-form-label">Point</label>
+                                        <div class="col-10">
+                                            <input class="form-control" value="1" name="point" type="number" id="example-url-input">
+                                        </div>
+                                    </div>
+                                     <div class="form-group row">
                                         <label for="example-url-input" class="col-2 col-form-label">Quantité</label>
                                         <div class="col-10">
                                             <input class="form-control" value="1" name="quantity" type="number" id="example-url-input">

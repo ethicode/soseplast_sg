@@ -15,6 +15,7 @@ class User
         if ($this->db->connect_error) {
             die("Connection failed: " . $this->db->connect_error);
         }
+        $this->db->set_charset("utf8mb4");
     }
 
     public function getAllUsers()
@@ -26,7 +27,7 @@ class User
 
     public function getUsersByPagination($calc_page, $num_results_on_page)
     {
-        $stmt = $this->db->prepare("SELECT user.id, user.name, user.is_enabled, role.name AS role_name FROM user left join role on user.role_id=role.id ORDER BY user.id DESC  LIMIT ?,?;");
+        $stmt = $this->db->prepare("SELECT user.id, user.email, user.name, user.is_enabled, role.name AS role_name FROM user left join role on user.role_id=role.id ORDER BY user.id DESC  LIMIT ?,?;");
         $stmt->bind_param('ii', $calc_page, $num_results_on_page); // "i" signifie que le paramètre est un entier.
         $stmt->execute();
         $result = $stmt->get_result();
@@ -81,6 +82,13 @@ class User
         $stmt->close();
     }
 
+    public function logout()
+    {
+        session_start();
+        session_unset();
+        session_destroy();
+    }
+
     public function getUserByEmail($email)
     {
         /*
@@ -96,7 +104,8 @@ class User
         return $result->fetch_assoc();
     }
 
-    public function deleteUser($id) {
+    public function deleteUser($id)
+    {
         // @param int $id L'ID de l'utilisateur à supprimer.
         $stmt = $this->db->prepare("DELETE FROM user WHERE id = ?");
         // Lie la variable $id au marqueur de position dans la requête préparée.
@@ -115,7 +124,7 @@ class User
         Voici quelques cas d'utilisation typiques : Affichage de Profil, Contrôle d'Accès
         Édition de l'utilisateur 
          */
-        $stmt = $this->db->prepare("SELECT * FROM product WHERE id = ?");
+        $stmt = $this->db->prepare("SELECT * FROM user WHERE id = ?");
         $stmt->bind_param("i", $id); // "i" signifie que le paramètre est un entier.
         $stmt->execute();
         $result = $stmt->get_result();

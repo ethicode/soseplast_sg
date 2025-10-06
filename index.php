@@ -7,7 +7,10 @@ require_once('controllers/RequestController.php');
 require_once('controllers/ArticleController.php');
 require_once('controllers/CategoryController.php');
 require_once('controllers/SellController.php');
+require_once('controllers/CommandController.php');
+require_once('controllers/DonController.php');
 require_once('models/UserModel.php');
+require_once('controllers/RequestController.php');
 
 // Créer une nouvelle instance du contrôleur
 $shoppingController = new ShoppingController();
@@ -18,6 +21,9 @@ $dashboardController = new DashboardController();
 $RequestController = new RequestController();
 $categoryController = new CategoryController();
 $sellController = new SellController();
+$commandController = new CommandController();
+$donController = new DonController();
+$requestController = new RequestController();
 
 // Vérifier l'action à effectuer
 if (isset($_GET['action'])) {
@@ -26,80 +32,153 @@ if (isset($_GET['action'])) {
     $action = 'shopping'; // Action par défaut
 }
 
-$role = "Administrateur";
+
+// if (isset($_SESSION['role'])) {
+//     $role = $_SESSION['role'];
+// } else {
+//     $role = "Utilisateur";
+// }
+
+session_start();
+$role = isset($_SESSION['role']) ? $_SESSION['role'] : "Utilisateur";
 // Appeler la méthode correspondante dans le contrôleur
 
-switch ($action) {
+switch ([$action, $role]) {
     case 'shopping':
         $shoppingController->showAllArticles();
         break;
-    case 'article':
-        $shoppingController->showDetailArticle();
-        break;
-    case 'updatearticle':
-        $articleController->showUpdateArticleForm();
-        break;
-    case 'savearticle':
-        $articleController->saveArticle();
-        break;
-    case 'loginForm':
-        $userController->loginForm();
-    case 'login':
-        $userController->login();
-        break;
-    case 'signinForm':
-        $userController->signForm();
-        break;
-
-    case 'dashboard':
-        $dashboardController->showDashboard();
-        break;
-    case 'articles':
-        $articleController->showAllArticles();
-        break;
-    case 'searchArticle':
+    case ['search', 'Utilisateur']:
+    case ['search', 'Administrateur']:
+    case ['search', 'Collaborateur']:
+    // case 'search':
         $articleController->searchArticles();
         break;
-    case 'addArticle':
+    case ['article', 'Administrateur']:
+        $shoppingController->showDetailArticle();
+        break;
+    case ['updatearticle', 'Administrateur']:
+        $articleController->showUpdateArticleForm();
+        break;
+    case ['savearticle', 'Administrateur']:
+        $articleController->saveArticle();
+        break;
+    case ['loginForm', 'Administrateur']:
+    case ['loginForm', 'Utilisateur']:
+    case ['loginForm', 'Collaborateur']:
+        $userController->loginForm();
+        break;
+    case ['registerForm', 'Administrateur']:
+    case ['registerForm', 'Utilisateur']:
+        $userController->loginForm();
+        break;
+    case ['login', 'Administrateur']:
+    case ['login', 'Utilisateur']:
+        $userController->login();
+        break;
+    case ['register', 'Administrateur']:
+    case ['register', 'Utilisateur']:
+        $userController->register();
+        break;
+    case ['signinForm', 'Utilisateur']:
+    case ['signinForm', 'Collaborateur']:
+        $userController->signForm();
+        break;
+    case ['monCompte', 'Administrateur']:
+    case ['monCompte', 'Utilisateur']:
+        $userController->myAccount();
+        break;
+
+    case ['dashboard', 'Administrateur']:
+        $dashboardController->showDashboard();
+        break;
+    case ['articles', 'Administrateur']:
+    // case ['articles', 'Utilisateur']:
+        $articleController->showAllArticles();
+        break;
+    case ['search', 'Administrateur']:
+    case ['search', 'Utilisateur']:
+    case ['search', 'Collaborateur']:
+        $articleController->searchArticles();
+        break;
+    case ['addArticle', 'Administrateur']:
         $articleController->addArticle();
         break;
-    case 'sellArticle':
+    case ['sellArticle', 'Administrateur']:
         $articleController->sellArticle();
         break;
-    case 'addArticleForm':
+    case ['sellArticlesByCategory', 'Administrateur']:
+    case ['sellArticlesByCategory', 'Utilisateur']:
+    case ['sellArticlesByCategory', 'Collaborateur']:
+        $articleController->SellArticlesByCategory();
+        break;
+    case ['addArticleForm', 'Administrateur']:
         $articleController->addArticleForm();
         break;
-    case 'demandes':
+    case ['commandes', 'Administrateur']:
+        $commandController->showAllCommands();
+        break;
+    case ['updateValidationCommand', 'Administrateur']:
+        $commandController->saveValidationCommand();
+        break;
+    case ['addCommand', 'Administrateur']:
+    case ['addCommand', 'Utilisateur']:
+    case ['addCommand', 'Collaborateur']:
+        $commandController->addCommand();
+        break;
+    case ['mes-commandes', 'Administrateur']:
+    case ['mes-commandes', 'Collaborateur']:
+        $commandController->mesCommandes();
+            break;
+    case ['deleteCommand', 'Administrateur']:
+    case ['deleteCommand', 'Utilisateur']:
+    case ['deleteCommand', 'Collaborateur']:
+        $commandController->deleteCommand();
+        break;
+
+    case ['annulerCommande', 'Administrateur']:
+    case ['annulerCommande', 'Utilisateur']:
+    case ['annulerCommande', 'Collaborateur']:
+        $commandController->annulerMonCommande();
+        break;
+
+    case ['demandes', 'Administrateur']:
         $RequestController->showAllRequests();
         break;
-    case 'utilisateurs':
+    case ['utilisateurs', 'Administrateur']:
         $userController->showUsers();
         break;
-    case 'deleteArticle':
+    case ['logout', 'Administrateur']:
+    case ['logout', 'Utilisateur']:
+        $userController->logout();
+        break;
+    case ['deleteArticle', 'Administrateur']:
         $articleController->deleteArticle();
         break;
-    case 'detailArticleAdmin':
-        $articleController->showDetailArticle();
+    case ['detailArticleAdmin', 'Administrateur']:
+        $articleController->showDetailArticleForAdmin();
         break;
-    case 'detailArticle':
+    case ['detailArticle', 'Administrateur']:
+    case ['detailArticle', 'Utilisateur']:
+    case ['detailArticle', 'Collaborateur']:
         $articleController->showDetailArticle();
         break;
     case 'addUserForm':
         $userController->addUserForm();
         break;
-    case 'forsale':
+    case ['envente', 'Administrateur']:
         $articleController->showForSaleArticles();
         break;
     case 'addSell':
         $sellController->addSell();
         break;
-    case 'addUser':
+    case ['addUser', 'Administrateur']:
+    case ['addUser', 'Utilisateur']:
         $userController->addUser();
         break;
-    case 'categories':
+    case ['categories', 'Administrateur']:
         $categoryController->showCategories();
         break;
-    case 'category':
+    case ['categoryAdmin', 'Administrateur']:
         $categoryController->showArticlesByCategory();
         break;
     case 'addCategory':
@@ -117,7 +196,33 @@ switch ($action) {
     case 'deleteUser':
         $userController->deleteUser();
         break;
+    case ['detailDemande', 'Administrateur']:
+    case ['detailDemande', 'Utilisateur']:
+        $requestController->detailRequest();
+        break;
+
+    case ['validationDemande', 'Administrateur']:
+    case ['validationDemande', 'Utilisateur']:
+        $requestController->validationRequest();
+        break;
+
+    case ['dons', 'Administrateur']:
+    // case ['dons', 'Utilisateur']:
+        $donController->showAllDons();
+        break;
+    case ['faireUnDon', 'Administrateur']:
+    case ['faireUnDon', 'Utilisateur']:
+        $donController->showAddDonForm();
+        break;
+    case ['ajouterUnDonEnNumeraire', 'Administrateur']:
+    case ['ajouterUnDonEnNumeraire', 'Utilisateur']:
+        $donController->ajouterDonEnNumeraire();
+        break;
+    case ['ajouterUnDonEnNature', 'Administrateur']:
+    case ['ajouterUnDonEnNature', 'Utilisateur']:
+        $donController->ajouterDonEnNumeraire();
+        break;
     default:
-        echo "Action non valide";
+        $shoppingController->showAllArticles();
         break;
 }

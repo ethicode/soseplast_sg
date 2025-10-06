@@ -129,21 +129,15 @@ class Article
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // Ajoute un nouvel utilisateur à la table "users" de la base de données.
-    public function addArticle($name, $description, $category_id, $quantity, $location, $image_url, $image_1, $image_2, $image_3)
+    public function addArticle($name, $description, $category_id, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3)
     {
-        // Prépare la requête SQL pour insérer un nouvel utilisateur.
-        // Utilise des marqueurs de position "?" pour les valeurs à insérer.
         $stmt = $this->db->prepare("INSERT INTO article (name, description, category_id, point, quantity, location, image_url, image_1, image_2, image_3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
-        // Vérifie si la préparation de la requête a échoué et, dans ce cas, affiche l'erreur MySQL
         if ($stmt === false) {
             die("MySQL Error: " . $this->db->error);
         }
-        // Lie les variables aux marqueurs de position dans la requête préparée.
         $stmt->bind_param("ssssssssss", $name, $description, $category_id, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3); // "sss" signifie que les 7 paramètres sont des chaînes de caractères.
-        $stmt->execute();  // Exécute la requête préparée.
-        $stmt->close(); // Ferme l'objet de requête préparée.
+        $stmt->execute(); 
+        $stmt->close(); 
     }
 
     public function saveArticle($name, $description, $category_id,$point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id)

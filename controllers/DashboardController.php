@@ -26,6 +26,14 @@ class DashboardController {
     }
 
     public function showDashboard() {
+
+        // if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+        //     // Enregistrez l'URL actuelle pour redirection après connexion
+        //     $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
+        //     header('Location: login.php');
+        //     exit;
+        // }
+
         $requests = $this->requestModel->getAllRequestLimit5();
         $request_count = $this->requestModel->selectCount();
         $countUsers = $this->modelUser->selectCount();

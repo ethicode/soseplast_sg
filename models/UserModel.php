@@ -21,6 +21,13 @@ class UserModel {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function updateUserPoints($id, $newPoint) {
+        $stmt = $this->db->prepare("UPDATE user SET point = ? WHERE id = ?");
+        $stmt->bind_param("ii", $newPoint, $id); // "ii" signifie que les 2 paramètres sont des entiers.
+        $stmt->execute();
+        $stmt->close();
+    }
+
     // Ajoute un nouvel utilisateur à la table "user" de la base de données.
     public function addUser($username, $email, $password) {
         // Prépare la requête SQL pour insérer un nouvel utilisateur.
@@ -62,7 +69,7 @@ class UserModel {
         Voici quelques cas d'utilisation typiques : Affichage de Profil, Contrôle d'Accès
         Édition de l'utilisateur 
          */   
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE id = ?");
+        $stmt = $this->db->prepare("SELECT * FROM user WHERE id = ?");
         $stmt->bind_param("i", $id); // "i" signifie que le paramètre est un entier.
         $stmt->execute();
         $result = $stmt->get_result();

@@ -48,7 +48,7 @@
                                                 <div class="product-image">
                                                     <div class="product-item active">
                                                         <a href="index.php?action=detailArticle&id=<?php echo $article["id"] ?>">
-                                                            <img src="../inventory/<?php echo $article["image_url"] ?>" alt="product" class="img-fluid w-100">
+                                                            <img src="inventory/<?php echo $article["image_url"] ?>" alt="product" class="img-fluid w-100">
                                                         </a>
                                                     </div>
                                                     <a class="add-wishlist" href="#">

@@ -33,7 +33,7 @@ class CategoryController
         $total_pages = $this->articleModel->getCountArticlesByCategory($id);
         // $total_pages = $this->articleModel->selectCount();
         $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
-        $num_results_on_page = 3;
+        $num_results_on_page = 8;
         $calc_page = ($page - 1) * $num_results_on_page;
 
         $articles = $this->categoryModel->getCategoryByIdbyPagination($calc_page, $num_results_on_page, $id);

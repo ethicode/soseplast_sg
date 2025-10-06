@@ -1,73 +1,123 @@
 <?php
 require_once('models/UserModel.php');
 require_once('models/User.php');
+require_once('models/Command.php');
 require_once('models/Role.php');
+require_once('models/Point.php');
 
 class UserController
 {
     private $model;
-    private $UserModel;
+    private $userModel;
+    private $commandModel;
     private $roleModel;
+    private $pointModel;
 
     public function __construct()
     {
-        $this->model = new UserModel();
-        $this->UserModel = new User();
+        $this->model = new userModel();
+        $this->userModel = new User();
         $this->roleModel = new Role();
+        $this->commandModel = new Command();
+        $this->pointModel = new Point();
     }
 
     public function showUsers()
     {
-        $total_pages = $this->UserModel->selectCount();
+        $total_pages = $this->userModel->selectCount();
         $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
-        $num_results_on_page = 3;
+        $num_results_on_page = 6;
         $calc_page = ($page - 1) * $num_results_on_page;
 
-        $users = $this->UserModel->getUsersByPagination($calc_page, $num_results_on_page);
+        $users = $this->userModel->getUsersByPagination($calc_page, $num_results_on_page);
         $roles = $this->roleModel->getAllRoles();
         $roleCount = $this->roleModel->selectCount();
-        require_once('views/user/users.php');
+        require_once('ecommerce/views/user/users.php');
+    }
+
+    public function logout()
+    {
+        // header("location: index.php");
+        $this->userModel->logout();
+        header("location: index.php?");
     }
 
     public function loginForm()
     {
-        require_once('views/user/login_form.php');
+        require_once('user/auth-signin.php');
+    }
+
+    public function registerForm()
+    {
+        require_once('user/auth-signup.php');
     }
 
     public function login()
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $user = $this->UserModel->getUserByEmail($email);
+        $user = $this->userModel->getUserByEmail($email);
         if ($user) {
             if (password_verify($password, $user["password"])) {
                 session_start();
                 $_SESSION['name'] = $user['name'];
                 $_SESSION['role'] = $user['role_name'];
                 $_SESSION['soseplast_user_id'] = $user['id'];
-                if (isset($_SESSION['role']) && $_SESSION['role'] === 'Administrateur') {
-                    // L'utilisateur est un administrateur, vous pouvez lui permettre d'accéder à la page de l'admin
-                    header("location: index.php?action=dashboard");
-                }
                 header("location: index.php");
             } else {
-                header("location: index.php?action=loginForm");
+                // header("location: index.php?action=loginForm");
+                require_once('user/login_form.php');
+            }
+        } else {
+            $_SESSION['login_error'] = "Email ou mot de passe incorrect.";
+            header("location: index.php?action=loginForm");
+            exit();
+            // require_once('user/login_form.php');
+        }
+        require_once('user/login_form.php');
+    }
+
+    public function register()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $role_id = 3;
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $this->userModel->addUser($name, $email, $password, $role_id);
+
+            // Récupération de l'utilisateur (en supposant que getUserByEmail existe)
+            $user = $this->userModel->getUserByEmail($email);
+
+            if ($user) {
+                // Démarrage de la session
+                session_start();
+                $_SESSION['name'] = $user['name'];
+                $_SESSION['role'] = $user['role_name'];
+                $_SESSION['soseplast_user_id'] = $user['id'];
             }
         }
-
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        require_once('views/user/login_form.php');
+        header('Location: ?action=home');
     }
 
     public function signForm()
     {
-        require_once('views/user/sign_form.php');
+        require_once('user/auth-signup.php');
+    }
+
+    public function myAccount()
+    {
+        $id = $_SESSION['soseplast_user_id'];
+        $user = $this->userModel->getUserById($id);
+        $commands = $this->commandModel->myCommands($id);
+        $point = $user['point'];
+        require_once('ecommerce/mon_compte.php');
+        
     }
 
     public function addUserForm()
     {
-        require_once('views/user_form.php');
+        require_once('ecommerce/views/user_form.php');
     }
 
     public function addUser()
@@ -77,16 +127,17 @@ class UserController
             $email = $_POST['email'];
             $role_id = $_POST['role_id'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $this->UserModel->addUser($name, $email, $password, $role_id);
+            // $this->userModel->addUser($name, $email, $password, $role_id);
+            $userId = $this->userModel->addUser($name, $email, $password, $role_id);
+            header('Location: ?action=utilisateurs');
         }
-        header('Location: ?action=utilisateurs');
     }
 
     public function editUser()
     {
         $id = $_GET['id'];
         $user = $this->model->getUserById($id);
-        require_once('views/user_edit_form.php');
+        require_once('ecommerce/views/user_edit_form.php');
     }
 
     public function updateUser()
@@ -103,7 +154,7 @@ class UserController
     public function deleteUser()
     {
         $id = $_GET['id'];
-        $this->UserModel->deleteUser($id);
+        $this->userModel->deleteUser($id);
         header('Location: index.php?action=utilisateurs');
     }
 }
