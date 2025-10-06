@@ -142,7 +142,7 @@ class Command
     public function myCommands($user_id)
     {
 
-        $stmt = $this->db->prepare("SELECT command.id, command.is_validated, article.name, article.id FROM command LEFT JOIN article ON command.article_id = article.id WHERE user_id = ?");
+        $stmt = $this->db->prepare("SELECT command.id, command.is_validated, article.point, article.name, article.id FROM command LEFT JOIN article ON command.article_id = article.id WHERE user_id = ?");
         $stmt->bind_param("i", $user_id); 
         $stmt->execute();
         $result = $stmt->get_result();

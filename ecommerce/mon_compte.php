@@ -135,10 +135,10 @@
                                     <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width: 100%;">
                                         <thead>
                                             <tr>
-                                                <th>Item</th>
-                                                <th>Payment Info</th>
+                                                <th>libellé</th>
+                                                <th>Etat</th>
                                                 <th>Point</th>
-                                                <th>Price</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -341,7 +341,6 @@
     <script src="assets/bundles/dataTables.bundle.js"></script>
 
     <!-- Jquery Page Js -->
-    <script src="../js/template.js"></script>
     <script src="../js/page/profile.js"></script>
     <script>
         $(document).ready(function() {
