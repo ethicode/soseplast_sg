@@ -26,12 +26,12 @@
             <!-- Body: Header -->
             <?php require 'sections/header.php' ?>
             <div class="container mt-4">
-                <nav class="navbar shadow-sm " data-bs-theme="dark">
+                <nav class="navbar " data-bs-theme="dark">
                     <div class="container-fluid">
                         <form class="w-100" method="get" action="index.php">
                             <input type="hidden" name="action" value="search">
 
-                            <div class="input-group flex-nowrap input-group-lg">
+                            <div class="input-group shadow-sm flex-nowrap input-group-lg">
                                 <input
                                     type="search"
                                     name="search"
@@ -85,7 +85,7 @@
                                                     <?php if ($article['is_ordered'] == 1): ?>
                                                         <p>déjà commandé par un utilisateur</p>
                                                     <?php else: ?>
-                                                        <button type="button" class="btn waves-effect waves-light btn-danger text-white fw-bold">Disponible à la vente</button>
+                                                        <button type="button" class="btn waves-effect waves-light btn-danger text-white fw-bold">Disponible </button>
                                                     <?php endif; ?>
                                                     <div id="command<?php echo $article["id"] ?>" class="modal in" tabindex="-1" role="dialog"
                                                         aria-labelledby="myModalLabel" aria-hidden="true">

@@ -28,11 +28,11 @@
                 </div>
             <?php else: ?>
                 <div class="h-right d-flex align-items-center mr-lg-0 order-1">
-            <button type="button" class="btn btn-dark text-white position-relative me-5">
+            <button type="button" class="btn btn-dark fw-bold text-white position-relative me-5">
                 Mes points
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                     <?php echo $user['point']; ?>
-                    <span class="visually-hidden">unread messages</span>
+                    <span class="visually-hidden">Mes points</span>
                 </span>
             </button>
                     <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover me-5">

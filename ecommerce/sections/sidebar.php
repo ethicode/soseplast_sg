@@ -25,26 +25,17 @@
                 <a class="btn btn-danger text-white" href="#">Reinitialiser</a>
             </div>
         </div>
-    </div>
-    <div class="card mb-3">
-        <div class="price-range-block">
-            <div class="filter-title">
-                <a class="title" data-bs-toggle="collapse" href="#pricingTwo" role="button" aria-expanded="false">FILTRER</a>
-            </div>
-            <div class="collapse show" id="pricingTwo">
-                <div class="price-range">
-                    <div class="price-amount flex-wrap">
-                        <div class="amount-input mt-1">
-                            <select name="point" class="form-select" aria-label="Default select example">
-                                <option value="1">Filtrer par point</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                    </div>
+        <div class="price-range">
+            <div class="price-amount flex-wrap">
+                <div class="amount-input m-3">
+                    <select name="point" class="form-select" aria-label="Default select example">
+                        <option value="1">Filtrer par point</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
                 </div>
             </div>
         </div>

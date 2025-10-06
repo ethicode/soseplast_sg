@@ -92,6 +92,8 @@
                                                             <?php if (isset($_SESSION["soseplast_user_id"])): ?>
                                                                 <?php if ($command): ?>
                                                                     <button type="button" class="btn text-white fw-bold waves-effect waves-light btn-danger" onclick="confirmCancelReservation('<?php echo $article["id"]; ?>')">Annuler la réservation</button>
+                                                                <?php elseif ($isCommanded): ?>
+                                                                    <button type="button" class="btn btn-secondary text-white fw-bold" disabled>Déjà réservé</button>
                                                                 <?php else: ?>
                                                                     <button type="button" class="btn waves-effect waves-light btn-danger text-white fw-bold" data-bs-toggle="modal" data-bs-target="#command<?php echo $article["id"] ?>">Commander</button>
                                                                 <?php endif ?>

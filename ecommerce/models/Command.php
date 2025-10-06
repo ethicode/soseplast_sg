@@ -151,15 +151,19 @@ class Command
 
     public function getCommandByUserId($user_id, $article_id)
     {
-        // /*
-        // La fonction getUserById($id) est généralement utilisée lorsque vous avez besoin
-        // d'obtenir des informations sur un utilisateur spécifique identifié par son ID.
-        // Voici quelques cas d'utilisation typiques : Affichage de Profil, Contrôle d'Accès
-        // Édition de l'utilisateur 
-        //  */
         $stmt = $this->db->prepare("SELECT user_id FROM command WHERE user_id = ? AND article_id = ?");
 
         $stmt->bind_param("ii", $user_id, $article_id); 
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+     public function getCommandByArticleId($article_id)
+    {
+        $stmt = $this->db->prepare("SELECT user_id FROM command WHERE article_id = ?");
+
+        $stmt->bind_param("i", $article_id); 
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_assoc();
