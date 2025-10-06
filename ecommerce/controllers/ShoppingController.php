@@ -9,7 +9,7 @@ require_once('models/Sell.php');
 class ShoppingController
 {
     private $model;
-    private $UserModel;
+    private $userModel;
     private $roleModel;
     private $articleModel;
     private $categoryModel;
@@ -18,7 +18,7 @@ class ShoppingController
     public function __construct()
     {
         $this->model = new UserModel();
-        $this->UserModel = new User();
+        $this->userModel = new User();
         $this->articleModel = new Article();
         $this->categoryModel = new Category();
         $this->sellModel = new Sell();
@@ -34,6 +34,8 @@ class ShoppingController
 
         $articles = $this->articleModel->getForSaleArticlesByPagination($calc_page, $num_results_on_page);
         $categories = $this->categoryModel->getAllCategoryForSale();
+        $id = $_SESSION['soseplast_user_id'];
+        $user = $this->userModel->getUserById($id);
         require_once('home.php');
     }
 

@@ -59,74 +59,13 @@
                     </div> <!-- Row end  -->
                     <div class="row g-3 mb-3">
                         <div class="col-md-12 col-lg-4 col-xl-4 col-xxl-3">
-                            <div class="sticky-lg-top">
-                                <div class="card mb-3">
-                                    <div class="categories">
-                                        <div class="collapse show" id="category">
-                                            <div class="filter-category">
-                                                <ul class="category-listd">
-                                                    <li><a class='title fw-bold h5' href="#" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" class="collapsed">Categories</a>
-                                                        <ul id="" class="" data-parent="#">
-                                                            <?php foreach ($categories as $category): ?>
-                                                                <li class="m-3 h6"> <a href="index.php?action=sellArticlesByCategory&id=<?php echo $category["id"] ?>"><?php echo $category["name"] ?></a></li>
-                                                            <?php endforeach ?>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-3">
-                                    <div class="reset-block">
-                                        <div class="filter-title">
-                                            <h4 class="title">Filtrer</h4>
-                                        </div>
-                                        <div class="filter-btn">
-                                            <a class="btn btn-danger text-white" href="#">Reinitialiser</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-3">
-                                    <div class="price-range-block">
-                                        <div class="filter-title">
-                                            <a class="title" data-bs-toggle="collapse" href="#pricingTwo" role="button" aria-expanded="false">FILTRER</a>
-                                        </div>
-                                        <div class="collapse show" id="pricingTwo">
-                                            <div class="price-range">
-                                                <div class="price-amount flex-wrap">
-                                                    <div class="amount-input mt-1 pe-2">
-                                                        <label class="fw-bold">Point Maximum</label>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option selected value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="amount-input mt-1 ps-2">
-                                                        <label class="fw-bold">Point Maximum</label>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option selected value="5">5</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                             <?php require 'sections/sidebar.php' ?>
                         </div>
                         <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-9">
                             <div class="row g-3 mb-3 row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-3">
                                 <?php foreach ($articles as $article): ?>
                                     <div class="col">
-                                        <div class="card h-100" style="pointer-events: <?php echo $article['is_ordered'] == 1 ? 'none' : 'auto'; ?>; opacity: <?php echo $article['is_ordered'] == 1 ? '0.6' : '1'; ?>;">
+                                        <div class="card h-100" style="opacity: <?php echo $article['is_ordered'] == 1 ? '0.6' : '1'; ?>;">
                                             <div class="product">
                                                 <div class="product-image">
                                                     <div class="product-item active">
@@ -255,6 +194,25 @@
     }
 </script>
 
+<script>
+    $(document).ready(function() {
+        // Appel AJAX automatique au chargement de la page
+        $.get('index.php?action=monCompte', {
+                action: 'monCompte'
+            })
+            .done(function(data) {
+                // Affiche la réponse dans la console
+                console.log('Réponse du serveur:', data);
+
+                // Injecte la réponse dans le HTML
+                $('#monCompteResult').html(data);
+            })
+            .fail(function(xhr, status, error) {
+                console.error('Erreur lors de la requête :', error);
+                $('#monCompteResult').html('<p style="color:red;">Erreur lors du chargement.</p>');
+            });
+    });
+</script>
 
 
 </html>

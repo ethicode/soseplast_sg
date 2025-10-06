@@ -112,6 +112,7 @@ class UserController
         $commands = $this->commandModel->myCommands($id);
         $point = $user['point'];
         require_once('mon_compte.php');
+        
     }
 
     public function addUserForm()
