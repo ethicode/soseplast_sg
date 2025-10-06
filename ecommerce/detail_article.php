@@ -178,7 +178,7 @@
     <script src="assets/bundles/libscripts.bundle.js"></script>
 
     <!-- Jquery Page Js -->
-    <script src="../js/template.js"></script>
+    <!-- <script src="../js/template.js"></script> -->
     <script>
         // =========== select-item-1 active 
         selectItem1 = document.querySelectorAll("#select-item-1 .single-item");

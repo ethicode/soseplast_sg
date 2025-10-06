@@ -214,27 +214,7 @@
     <script src="assets/plugin/nouislider/nouislider.min.js"></script>
 
     <!-- Jquery Page Js -->
-    <script src="../js/template.js"></script>
-    <script>
-        var stepsSlider2 = document.getElementById('slider-range2');
-        var input3 = document.getElementById('minAmount2');
-        var input4 = document.getElementById('maxAmount2');
-        var inputs2 = [input3, input4];
-        noUiSlider.create(stepsSlider2, {
-            start: [0.5, 1.0],
-            connect: true,
-            step: 1,
-            range: {
-                'min': [0.5],
-                'max': 5.0
-            },
-
-        });
-
-        stepsSlider2.noUiSlider.on('update', function(values, handle) {
-            inputs2[handle].value = values[handle];
-        });
-    </script>
+    <!-- <script src="../js/template.js"></script> -->
 </body>
 
 <!-- Mirrored from pixelwibes.com/template/ebazar/html/dist/product-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Aug 2025 13:37:32 GMT -->
@@ -273,47 +253,6 @@
             window.location.href = "index.php?action=deleteCommand&id=" + id;
         }
     }
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Cibler tous les boutons qui déclenchaient l’ouverture de la modale
-        var buttons = document.querySelectorAll('[data-article-id]');
-
-        buttons.forEach(function(button) {
-            button.addEventListener('click', function(event) {
-                event.preventDefault();
-
-                // Récupération de l'id article depuis data-attribute
-                var articleId = button.getAttribute('data-article-id');
-
-                // Alerte de confirmation
-                if (confirm("Voulez-vous vraiment réserver l’article #" + articleId + " ?")) {
-                    // Exemple de requête POST
-                    fetch('/reservation', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-Requested-With': 'XMLHttpRequest'
-                            },
-                            body: JSON.stringify({
-                                article_id: articleId
-                            })
-                        })
-                        .then(response => {
-                            if (!response.ok) throw new Error("Erreur serveur");
-                            return response.json();
-                        })
-                        .then(data => {
-                            alert("Réservation confirmée pour l’article #" + articleId);
-                            // Optionnel : rafraîchir la page ou mettre à jour l’UI
-                        })
-                        .catch(error => {
-                            alert("Échec de la réservation : " + error.message);
-                        });
-                }
-            });
-        });
-    });
 </script>
 
 

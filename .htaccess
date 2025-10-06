@@ -1,0 +1,15 @@
+# Active le moteur de réécriture d'URL
+RewriteEngine On
+
+# FORCER HTTPS (redirection de http vers https)
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Rediriger toutes les requêtes vers /ecommerce/
+RewriteCond %{REQUEST_URI} !^/ecommerce/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ecommerce/$1 [L]
+
+# Définir ecommerce/index.php comme page d'accueil
+DirectoryIndex ecommerce/index.php
