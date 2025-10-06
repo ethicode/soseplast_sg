@@ -11,7 +11,7 @@
     <link rel="icon" href="../favicon.ico" type="image/x-icon"> <!-- Favicon-->
 
     <!-- project css file  -->
-    <link rel="stylesheet" href="../assets/css/ebazar.style.min.css">
+    <link rel="stylesheet" href="dist/assets/css/ebazar.style.min.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
 
         <!-- main body area -->
         <div class="main p-2">
-            <?php require 'sections/header.php' ?>
+            <?php require 'ecommerce/sections/header.php' ?>
 
             <!-- Body: Body -->
             <div class="body d-flex p-0 p-xl-5">
@@ -33,7 +33,7 @@
                                 </div>
                                 <!-- Image block -->
                                 <div class="">
-                                    <img src="../assets/images/login-img.svg" alt="login-img">
+                                    <img src="assets/images/login-img.svg" alt="login-img">
                                 </div>
                             </div>
                         </div>

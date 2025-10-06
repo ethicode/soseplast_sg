@@ -192,7 +192,9 @@ class ArticleController
             $quantity = $_POST['quantity'];
             $location = $_POST['location'];
             $point = $_POST['point'];
-            $this->articleModel->addArticle($name, $description, $category_id, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3);
+            $for_sale = isset($_POST['for_sale']) ? 1 : 0;
+
+            $this->articleModel->addArticle($name, $description, $category_id, $point, $for_sale, $quantity, $location, $image_url, $image_1, $image_2, $image_3);
         }
         header('Location: index.php?action=articles');
     }
@@ -208,6 +210,7 @@ class ArticleController
             $point = $_POST['point'];
             $quantity = $_POST['quantity'];
             $location = $_POST['location'];
+            $for_sale = isset($_POST['for_sale']) ? 1 : 0;
 
             $upload_directory = "./public/images/";
             $image_url = $upload_directory . basename($_FILES["image_url"]["name"]);
@@ -264,7 +267,7 @@ class ArticleController
             move_uploaded_file($_FILES["image_2"]["tmp_name"], $image_2);
             move_uploaded_file($_FILES["image_3"]["tmp_name"], $image_3);
 
-            $this->articleModel->saveArticle($name, $description, $category_id, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
+            $this->articleModel->saveArticle($name, $description, $category_id, $for_sale, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
         }
         // header('Location: index.php?action=articles');
         header('Location: index.php?action=detailArticleAdmin&id=' . $article_id);

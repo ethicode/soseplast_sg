@@ -19,7 +19,7 @@ class Article
 
     public function getAllArticles()
     {
-        $sql = "SELECT article.name, article.id, article.point, article.location, article.for_sale, article.price, article.quantity, article.image_url, article.created_at, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id ORDER BY article.id DESC;";
+        $sql = "SELECT article.name, article.id, article.point, article.location, article.for_sale, article.price, article.quantity, article.image_url, article.created_at, status_article.name as status_article_name, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id LEFT JOIN status_article on article.status_id = status_article.id ORDER BY article.id DESC;";
         $result = $this->db->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
@@ -129,21 +129,21 @@ class Article
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addArticle($name, $description, $category_id, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3)
+    public function addArticle($name, $description, $category_id, $point, $for_sale, $quantity, $location, $image_url, $image_1, $image_2, $image_3)
     {
-        $stmt = $this->db->prepare("INSERT INTO article (name, description, category_id, point, quantity, location, image_url, image_1, image_2, image_3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO article (name, description, category_id, point, for_sale, quantity, location, image_url, image_1, image_2, image_3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         if ($stmt === false) {
             die("MySQL Error: " . $this->db->error);
         }
-        $stmt->bind_param("ssssssssss", $name, $description, $category_id, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3); // "sss" signifie que les 7 paramètres sont des chaînes de caractères.
+        $stmt->bind_param("ssiiissssss", $name, $description, $category_id, $point, $for_sale, $quantity, $location, $image_url, $image_1, $image_2, $image_3); // "sss" signifie que les 7 paramètres sont des chaînes de caractères.
         $stmt->execute(); 
         $stmt->close(); 
     }
 
-    public function saveArticle($name, $description, $category_id,$point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id)
+    public function saveArticle($name, $description, $category_id, $for_sale, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id)
     {
-        $stmt = $this->db->prepare("UPDATE article SET name = ?, description = ?, category_id = ?, point = ?, quantity = ?, location = ?, image_url = ?, image_1 = ?, image_2 = ?, image_3 = ? WHERE id = ?");
-        $stmt->bind_param("ssiissssssi", $name, $description, $category_id, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
+        $stmt = $this->db->prepare("UPDATE article SET name = ?, description = ?, category_id = ?, for_sale = ?, point = ?, quantity = ?, location = ?, image_url = ?, image_1 = ?, image_2 = ?, image_3 = ? WHERE id = ?");
+        $stmt->bind_param("ssiiissssssi", $name, $description, $category_id, $for_sale, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
         $stmt->execute();
         $stmt->close();
     }
@@ -176,7 +176,7 @@ class Article
         // Voici quelques cas d'utilisation typiques : Affichage de Profil, Contrôle d'Accès
         // Édition de l'utilisateur 
         //  */
-        $stmt = $this->db->prepare("SELECT article.name, article.point, article.id, article.description, article.price, article.location, article.image_url, article.image_1, article.image_2, article.image_3, article.location, article.quantity, article.category_id, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id WHERE article.id = ?");
+        $stmt = $this->db->prepare("SELECT article.name, article.point, article.for_sale, article.id, article.description, article.price, article.location, article.image_url, article.image_1, article.image_2, article.image_3, article.location, article.quantity, article.category_id, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id WHERE article.id = ?");
 
         $stmt->bind_param("i", $id); // "i" signifie que le paramètre est un entier.
         $stmt->execute();

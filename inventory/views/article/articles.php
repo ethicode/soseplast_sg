@@ -24,7 +24,7 @@
     <link href="./public/dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
+    <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -169,7 +169,7 @@
                                         <!-- /.modal-dialog -->
                                     </div>
                                     <div class="table-responsive">
-                                        <table  id="myTable"
+                                        <table id="myTable"
                                             class="table border table-striped m-t-30 table-hover"
                                             data-paging="true" data-paging-size="7">
                                             <thead>
@@ -178,6 +178,7 @@
                                                     <th>Libellé</th>
                                                     <th>Quantité</th>
                                                     <th>Point</th>
+                                                    <th>Etat</th>
                                                     <th>Etat</th>
                                                     <th>Catégorie</th>
                                                     <th>Emplacement</th>
@@ -193,6 +194,7 @@
                                                         </td>
                                                         <td><?php echo $article["quantity"]; ?></td>
                                                         <td><?php echo $article["point"]; ?></td>
+                                                        <td><span class="label label-info"><?php echo $article["status_article_name"]; ?></span> </td>
                                                         <?php if ($article["for_sale"] == true): ?>
                                                             <td><span class="label label-info">En cession</span> </td>
                                                         <?php else: ?>
@@ -387,7 +389,7 @@
     <script>
         function confirmDelete(id) {
             if (confirm("Voulez-vous vraiment supprimer cette catégorie ?")) {
-                window.location.href="index.php?action=deleteCategory&id=" + id;
+                window.location.href = "index.php?action=deleteArticle&id=" + id;
             }
         }
 

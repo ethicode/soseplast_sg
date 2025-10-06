@@ -44,12 +44,12 @@ class UserController
 
     public function loginForm()
     {
-        require_once('user/auth-signin.php');
+        require_once('ecommerce/user/auth-signin.php');
     }
 
     public function registerForm()
     {
-        require_once('user/auth-signup.php');
+        require_once('ecommerce/user/auth-signup.php');
     }
 
     public function login()
@@ -66,15 +66,15 @@ class UserController
                 header("location: index.php");
             } else {
                 // header("location: index.php?action=loginForm");
-                require_once('user/login_form.php');
+                require_once('ecommerce/user/login_form.php');
             }
         } else {
             $_SESSION['login_error'] = "Email ou mot de passe incorrect.";
             header("location: index.php?action=loginForm");
             exit();
-            // require_once('user/login_form.php');
+            // require_once('ecommerce/user/login_form.php');
         }
-        require_once('user/login_form.php');
+        require_once('ecommerce/user/login_form.php');
     }
 
     public function register()
@@ -102,7 +102,7 @@ class UserController
 
     public function signForm()
     {
-        require_once('user/auth-signup.php');
+        require_once('ecommerce/user/auth-signup.php');
     }
 
     public function myAccount()

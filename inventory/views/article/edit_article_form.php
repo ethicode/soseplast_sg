@@ -104,8 +104,8 @@
                                         <div class="col-10">
                                             <!-- <textarea class="textarea_editor form-control" rows="15" placeholder="Enter text ..."></textarea> -->
                                             <div class="form-group">
-                                            <!-- <textarea class="form-control" rows="4" name="description" id=""><?php echo $article["description"] ?></textarea> -->
-                                            <textarea class="textarea_editor form-control" name="description" rows="15" placeholder="Enter text ..."><?php echo $article["description"] ?></textarea>
+                                                <!-- <textarea class="form-control" rows="4" name="description" id=""><?php echo $article["description"] ?></textarea> -->
+                                                <textarea class="textarea_editor form-control" name="description" rows="15" placeholder="Enter text ..."><?php echo $article["description"] ?></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +115,7 @@
                                             <input class="form-control" name="point" type="number" value="<?php echo $article["point"] ?>" id="">
                                         </div>
                                     </div>
-                                     <div class="form-group row">
+                                    <div class="form-group row">
                                         <label for="example-url-input" class="col-2 col-form-label">Quantité</label>
                                         <div class="col-10">
                                             <input class="form-control" name="quantity" type="number" value="<?php echo $article["quantity"] ?>" id="example-url-input">
@@ -137,7 +137,19 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="form-check">
+                                        <input
+                                            class="form-check-input"
+                                            name="for_sale"
+                                            type="checkbox"
+                                            value="1"
+                                            id="checkChecked"
+                                            <?php if (!empty($article['for_sale'])) echo 'checked'; ?>>
+                                        <label class="form-check-label" for="checkChecked">
+                                            Céder cet article
+                                        </label>
+                                    </div>
+                                    <div class="row mt-3">
                                         <!-- <div class="col-lg-6 col-md-6">
                                             <div class="card">
                                                 <div class="card-body">
@@ -240,11 +252,11 @@
     <script src="./public/assets/node_modules/html5-editor/bootstrap-wysihtml5.js"></script>
     <script src="./public/assets/node_modules/dropzone-master/dist/dropzone.js"></script>
     <script>
-    $(document).ready(function() {
+        $(document).ready(function() {
 
-        $('.textarea_editor').wysihtml5();
+            $('.textarea_editor').wysihtml5();
 
-    });
+        });
     </script>
     <script>
         $(document).ready(function() {

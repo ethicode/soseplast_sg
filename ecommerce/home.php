@@ -201,25 +201,6 @@
     }
 </script>
 
-<script>
-    $(document).ready(function() {
-        // Appel AJAX automatique au chargement de la page
-        $.get('index.php?action=monCompte', {
-                action: 'monCompte'
-            })
-            .done(function(data) {
-                // Affiche la réponse dans la console
-                console.log('Réponse du serveur:', data);
-
-                // Injecte la réponse dans le HTML
-                $('#monCompteResult').html(data);
-            })
-            .fail(function(xhr, status, error) {
-                console.error('Erreur lors de la requête :', error);
-                $('#monCompteResult').html('<p style="color:red;">Erreur lors du chargement.</p>');
-            });
-    });
-</script>
 
 
 </html>

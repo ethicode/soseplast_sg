@@ -111,7 +111,7 @@
                                             <input class="form-control" value="1" name="point" type="number" id="example-url-input">
                                         </div>
                                     </div>
-                                     <div class="form-group row">
+                                    <div class="form-group row">
                                         <label for="example-url-input" class="col-2 col-form-label">Quantité</label>
                                         <div class="col-10">
                                             <input class="form-control" value="1" name="quantity" type="number" id="example-url-input">
@@ -133,7 +133,12 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="for_sale" type="checkbox" value="1" id="checkChecked" checked> <label class="form-check-label" for="checkChecked">
+                                            Céder cet article
+                                        </label>
+                                    </div>
+                                    <div class="row mt-3">
                                         <!-- <div class="col-lg-6 col-md-6">
                                             <div class="card">
                                                 <div class="card-body">
@@ -192,84 +197,84 @@
                 </div>
             </div>
             <!-- ============================================================== -->
+            <!-- ============================================================== -->
+        </div>
         <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="./public/assets/node_modules/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="./public/assets/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="./public/dist/js/perfect-scrollbar.jquery.min.js"></script>
-    <!--Wave Effects -->
-    <script src="./public/dist/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="./public/dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="./public/dist/js/custom.min.js"></script>
-    <!-- ============================================================== -->
-    <!-- This page plugins -->
-    <!-- ============================================================== -->
-    <script src="./public/dist/js/pages/jasny-bootstrap.js"></script>
-    <!-- dropify -->
-    <script src="./public/assets/node_modules/dropify/dist/js/dropify.min.js"></script>
-    <!--Custom JavaScript -->
-    <script src="./public/assets/node_modules/html5-editor/wysihtml5-0.3.0.js"></script>
-    <script src="./public/assets/node_modules/html5-editor/bootstrap-wysihtml5.js"></script>
-    <script src="./public/assets/node_modules/dropzone-master/dist/dropzone.js"></script>
-    <script>
-    $(document).ready(function() {
+        <!-- End Wrapper -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <script src="./public/assets/node_modules/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="./public/assets/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="./public/dist/js/perfect-scrollbar.jquery.min.js"></script>
+        <!--Wave Effects -->
+        <script src="./public/dist/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="./public/dist/js/sidebarmenu.js"></script>
+        <!--Custom JavaScript -->
+        <script src="./public/dist/js/custom.min.js"></script>
+        <!-- ============================================================== -->
+        <!-- This page plugins -->
+        <!-- ============================================================== -->
+        <script src="./public/dist/js/pages/jasny-bootstrap.js"></script>
+        <!-- dropify -->
+        <script src="./public/assets/node_modules/dropify/dist/js/dropify.min.js"></script>
+        <!--Custom JavaScript -->
+        <script src="./public/assets/node_modules/html5-editor/wysihtml5-0.3.0.js"></script>
+        <script src="./public/assets/node_modules/html5-editor/bootstrap-wysihtml5.js"></script>
+        <script src="./public/assets/node_modules/dropzone-master/dist/dropzone.js"></script>
+        <script>
+            $(document).ready(function() {
 
-        $('.textarea_editor').wysihtml5();
+                $('.textarea_editor').wysihtml5();
 
-    });
-    </script>
-    <script>
-        $(document).ready(function() {
-            // Basic
-            $('.dropify').dropify();
-
-            // Translated
-            $('.dropify-fr').dropify({
-                messages: {
-                    default: 'Glissez-déposez un fichier ici ou cliquez',
-                    replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
-                    remove: 'Supprimer',
-                    error: 'Désolé, le fichier trop volumineux'
-                }
             });
+        </script>
+        <script>
+            $(document).ready(function() {
+                // Basic
+                $('.dropify').dropify();
 
-            // Used events
-            var drEvent = $('#input-file-events').dropify();
+                // Translated
+                $('.dropify-fr').dropify({
+                    messages: {
+                        default: 'Glissez-déposez un fichier ici ou cliquez',
+                        replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                        remove: 'Supprimer',
+                        error: 'Désolé, le fichier trop volumineux'
+                    }
+                });
 
-            drEvent.on('dropify.beforeClear', function(event, element) {
-                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+                // Used events
+                var drEvent = $('#input-file-events').dropify();
+
+                drEvent.on('dropify.beforeClear', function(event, element) {
+                    return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+                });
+
+                drEvent.on('dropify.afterClear', function(event, element) {
+                    alert('File deleted');
+                });
+
+                drEvent.on('dropify.errors', function(event, element) {
+                    console.log('Has Errors');
+                });
+
+                var drDestroy = $('#input-file-to-destroy').dropify();
+                drDestroy = drDestroy.data('dropify')
+                $('#toggleDropify').on('click', function(e) {
+                    e.preventDefault();
+                    if (drDestroy.isDropified()) {
+                        drDestroy.destroy();
+                    } else {
+                        drDestroy.init();
+                    }
+                })
             });
-
-            drEvent.on('dropify.afterClear', function(event, element) {
-                alert('File deleted');
-            });
-
-            drEvent.on('dropify.errors', function(event, element) {
-                console.log('Has Errors');
-            });
-
-            var drDestroy = $('#input-file-to-destroy').dropify();
-            drDestroy = drDestroy.data('dropify')
-            $('#toggleDropify').on('click', function(e) {
-                e.preventDefault();
-                if (drDestroy.isDropified()) {
-                    drDestroy.destroy();
-                } else {
-                    drDestroy.init();
-                }
-            })
-        });
-    </script>
+        </script>
 </body>
 
 </html>

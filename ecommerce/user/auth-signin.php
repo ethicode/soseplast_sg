@@ -19,7 +19,7 @@
 
         <!-- main body area -->
         <div class="main">
-            <?php require 'sections/header.php' ?>
+            <?php require 'ecommerce/sections/header.php' ?>
 
             <!-- Body: Body -->
             <div class="body d-flex p-0 p-xl-5">

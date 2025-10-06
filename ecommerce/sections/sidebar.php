@@ -21,9 +21,6 @@
             <div class="filter-title">
                 <h4 class="title">Filtrer</h4>
             </div>
-            <div class="filter-btn">
-                <a class="btn btn-danger text-white" href="#">Reinitialiser</a>
-            </div>
         </div>
         <div class="price-range">
             <div class="price-amount flex-wrap">
