@@ -121,12 +121,6 @@
                                             <input class="form-control" name="quantity" type="number" value="<?php echo $article["quantity"] ?>" id="example-url-input">
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="example-url-input" class="col-2 col-form-label">Valeur estimée</label>
-                                        <div class="col-10">
-                                            <input class="form-control" name="price" type="text" value="<?php echo $article["price"] ?>" id="example-url-input">
-                                        </div>
-                                    </div>
                                     <div class="form-group mt-5 row">
                                         <label for="example-text-input" class="col-2 col-form-label">Emplacement</label>
                                         <div class="col-10">

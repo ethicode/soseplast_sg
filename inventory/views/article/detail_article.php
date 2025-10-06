@@ -162,86 +162,91 @@
                                         <!-- <h4 class="font-bold">Description: </h4> -->
                                         <br>
                                         <h5><b><?php echo $article["description"] ?></b></h>
-                                    <!-- </div><hr><div class="card-body py-0">
+                                            <!-- </div><hr><div class="card-body py-0">
                                         <h4 class="font-bold">Catégoy : </h4>
                                         <h5><b><?php echo $article["category_name"] ?></b></h>
                                     </div> -->
-                                    <hr><div class="card-body py-0">
-                                        <h4 class="font-bold">Quantité : </h4>
-                                        <h5><b><?php echo $article["quantity"] ?></b></h>
-                                    </div>
-                                    <hr>
-                                    <div class="card-body py-0">
-                                        <h4 class="font-bold">Valeur estimée : </h4>
-                                        <h5><b><?php echo $article["price"] ?></b></h>
-                                    </div>
-                                    <hr>
-                                    <div class="card-body">
-                                        <?php if (isset($_SESSION["soseplast_user_id"])): ?>
-                                            <a type="button" class="btn waves-effect waves-light btn-info shadow" href="index.php?action=updatearticle&id=<?php echo $article["id"] ?>">Modifier</a>
-                                            <button type="button" class="btn waves-effect waves-light btn-danger shadow" data-bs-toggle="modal" data-bs-target="#command">Supprimer</button>
-                                        <?php else: ?>
-                                            <a href="index.php?action=loginForm" class="btn waves-effect waves-light btn-danger btn-lg">Connectez-vous pour réserver cet article</a>
-                                        <?php endif ?>
-                                        <div id="command" class="modal fade in" tabindex="-1" role="dialog"
-                                            aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div action="index.php?action=deleteArticle" class="form-horizontal form-material">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title text-dark fw-bold" id="myModalLabel">Supprimer cet article</h4>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-hidden="true"></button>
-                                                        </div>
-                                                        <div class="modal-footer text-center">
-                                                            <input type="hidden" value="<?php echo $user["id"] ?>">
-                                                            <input name="id" type="hidden" value="<?php echo $article["id"] ?>">
-                                                            <a href="index.php?action=deleteArticle&id=<?php echo $article["id"] ?>"  class="btn btn-danger waves-effect"
-                                                               >CONFIRMER</a>
-                                                            <button type="button" class="btn btn-default waves-effect"
-                                                                data-bs-dismiss="modal">Annuler</button>
+                                            <hr>
+                                            <div class="card-body py-0">
+                                                <h4 class="font-bold">Point : </h4>
+                                                <h5><b><?php echo $article["point"] ?></b></h>
+                                            </div>
+                                            <hr>
+                                            <div class="card-body py-0">
+                                                <h4 class="font-bold">Quantité : </h4>
+                                                <h5><b><?php echo $article["quantity"] ?></b></h>
+                                            </div>
+                                            <hr>
+                                            <!-- <div class="card-body py-0">
+                                                <h4 class="font-bold">Valeur estimée : </h4>
+                                                <h5><b><?php echo $article["price"] ?></b></h>
+                                            </div>
+                                            <hr> -->
+                                            <div class="card-body">
+                                                <?php if (isset($_SESSION["soseplast_user_id"])): ?>
+                                                    <a type="button" class="btn waves-effect waves-light btn-info shadow" href="index.php?action=updatearticle&id=<?php echo $article["id"] ?>">Modifier</a>
+                                                    <button type="button" class="btn waves-effect waves-light btn-danger shadow" data-bs-toggle="modal" data-bs-target="#command">Supprimer</button>
+                                                <?php else: ?>
+                                                    <a href="index.php?action=loginForm" class="btn waves-effect waves-light btn-danger btn-lg">Connectez-vous pour réserver cet article</a>
+                                                <?php endif ?>
+                                                <div id="command" class="modal fade in" tabindex="-1" role="dialog"
+                                                    aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div action="index.php?action=deleteArticle" class="form-horizontal form-material">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title text-dark fw-bold" id="myModalLabel">Supprimer cet article</h4>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                        aria-hidden="true"></button>
+                                                                </div>
+                                                                <div class="modal-footer text-center">
+                                                                    <input type="hidden" value="<?php echo $user["id"] ?>">
+                                                                    <input name="id" type="hidden" value="<?php echo $article["id"] ?>">
+                                                                    <a href="index.php?action=deleteArticle&id=<?php echo $article["id"] ?>" class="btn btn-danger waves-effect">CONFIRMER</a>
+                                                                    <button type="button" class="btn btn-default waves-effect"
+                                                                        data-bs-dismiss="modal">Annuler</button>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.modal-content -->
                                                         </div>
                                                     </div>
-                                                    <!-- /.modal-content -->
+                                                    <!-- /.modal-dialog -->
                                                 </div>
                                             </div>
-                                            <!-- /.modal-dialog -->
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Column -->
                     </div>
-                    <!-- Column -->
+                    <!-- ============================================================== -->
                 </div>
+                <!-- ============================================================== -->
+                <!-- End Container fluid  -->
                 <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="./public/assets/node_modules/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="./public/assets/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="./public/dist/js/perfect-scrollbar.jquery.min.js"></script>
-    <!--Wave Effects -->
-    <script src="./public/dist/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="./public/dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="./public/dist/js/custom.min.js"></script>
-    <!-- Magnific popup JavaScript -->
-    <script src="./public/assets/node_modules/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
-    <script src="./public/assets/node_modules/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
+        <!-- End Wrapper -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <script src="./public/assets/node_modules/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="./public/assets/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="./public/dist/js/perfect-scrollbar.jquery.min.js"></script>
+        <!--Wave Effects -->
+        <script src="./public/dist/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="./public/dist/js/sidebarmenu.js"></script>
+        <!--Custom JavaScript -->
+        <script src="./public/dist/js/custom.min.js"></script>
+        <!-- Magnific popup JavaScript -->
+        <script src="./public/assets/node_modules/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
+        <script src="./public/assets/node_modules/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
 </body>
 
 </html>

@@ -146,10 +146,10 @@ class Article
         $stmt->close(); // Ferme l'objet de requête préparée.
     }
 
-    public function saveArticle($name, $description, $category_id,$point, $quantity, $price, $location, $image_url, $image_1, $image_2, $image_3, $article_id)
+    public function saveArticle($name, $description, $category_id,$point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id)
     {
-        $stmt = $this->db->prepare("UPDATE article SET name = ?, description = ?, point = ?, category_id = ?, quantity = ?, price = ?, location = ?, image_url = ?, image_1 = ?, image_2 = ?, image_3 = ? WHERE id = ?");
-        $stmt->bind_param("ssiiissssssi", $name, $description, $category_id, $point, $quantity, $price, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
+        $stmt = $this->db->prepare("UPDATE article SET name = ?, description = ?, category_id = ?, point = ?, quantity = ?, location = ?, image_url = ?, image_1 = ?, image_2 = ?, image_3 = ? WHERE id = ?");
+        $stmt->bind_param("ssiissssssi", $name, $description, $category_id, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
         $stmt->execute();
         $stmt->close();
     }
