@@ -388,7 +388,7 @@
     <!-- end - This is for export functionality only -->
     <script>
         function confirmDelete(id) {
-            if (confirm("Voulez-vous vraiment supprimer cette catégorie ?")) {
+            if (confirm("Voulez-vous vraiment supprimer cette article ?")) {
                 window.location.href = "index.php?action=deleteArticle&id=" + id;
             }
         }
