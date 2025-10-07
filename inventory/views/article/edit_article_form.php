@@ -137,6 +137,16 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label for="example-month-input2" class="col-2 col-form-label">Select</label>
+                                        <div class="col-10">
+                                            <select class="form-select col-12" name="status_article_id" id="example-month-input2">
+                                                <?php foreach ($status_articles as $status_article): ?>
+                                                    <option <?php echo $status_article["id"] == $article["status_id"] ? "selected" : ""; ?> value="<?php echo $status_article["id"]; ?>"><?php echo $status_article["name"]; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="form-check">
                                         <input
                                             class="form-check-input"

@@ -139,10 +139,10 @@ class Article
         $stmt->close(); 
     }
 
-    public function saveArticle($name, $description, $category_id, $for_sale, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id)
+    public function saveArticle($name, $description, $category_id, $status__id, $for_sale, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id)
     {
-        $stmt = $this->db->prepare("UPDATE article SET name = ?, description = ?, category_id = ?, for_sale = ?, point = ?, quantity = ?, location = ?, image_url = ?, image_1 = ?, image_2 = ?, image_3 = ? WHERE id = ?");
-        $stmt->bind_param("ssiiissssssi", $name, $description, $category_id, $for_sale, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
+        $stmt = $this->db->prepare("UPDATE article SET name = ?, description = ?, category_id = ?, status_id = ?, for_sale = ?, point = ?, quantity = ?, location = ?, image_url = ?, image_1 = ?, image_2 = ?, image_3 = ? WHERE id = ?");
+        $stmt->bind_param("ssiiiissssssi", $name, $description, $category_id, $status__id, $for_sale, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
         $stmt->execute();
         $stmt->close();
     }

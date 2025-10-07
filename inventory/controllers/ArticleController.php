@@ -5,6 +5,7 @@ require_once('models/Article.php');
 require_once('models/Category.php');
 require_once('models/User.php');
 require_once('models/Command.php');
+require_once('models/StatusArticle.php');
 
 class ArticleController
 {
@@ -14,6 +15,7 @@ class ArticleController
     private $articleModel;
     private $userModel;
     private $commandModel;
+    private $statusArticleModel;
 
     public function __construct()
     {
@@ -23,6 +25,7 @@ class ArticleController
         $this->categoryModel = new Category();
         $this->articleModel = new Article();
         $this->commandModel = new Command();
+        $this->statusArticleModel = new StatusArticle();
     }
 
     public function showAllArticles()
@@ -114,6 +117,7 @@ class ArticleController
         $id = $_GET['id'];
         $article = $this->articleModel->getArticleById($id);
         $categories = $this->modelCategory->getAllCategory();
+        $status_articles = $this->statusArticleModel->getAllStatusArticles();
         require_once('views/article/edit_article_form.php');
     }
 
@@ -211,6 +215,7 @@ private function generateUniqueFileName($filePath)
             $point = $_POST['point'];
             $quantity = $_POST['quantity'];
             $location = $_POST['location'];
+            $status_id = $_POST['status_article_id'];
             $for_sale = isset($_POST['for_sale']) ? 1 : 0;
 
             $upload_directory = "./public/images/";
@@ -268,7 +273,7 @@ private function generateUniqueFileName($filePath)
             move_uploaded_file($_FILES["image_2"]["tmp_name"], $image_2);
             move_uploaded_file($_FILES["image_3"]["tmp_name"], $image_3);
 
-            $this->articleModel->saveArticle($name, $description, $category_id, $for_sale, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
+            $this->articleModel->saveArticle($name, $description, $category_id, $status_id, $for_sale, $point, $quantity, $location, $image_url, $image_1, $image_2, $image_3, $article_id);
         }
         // header('Location: index.php?action=articles');
         header('Location: index.php?action=detailArticleAdmin&id=' . $article_id);
