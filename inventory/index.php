@@ -164,7 +164,7 @@ switch ([$action, $role]) {
     case ['categoryAdmin', 'Administrateur']:
         $categoryController->showArticlesByCategory();
         break;
-    case 'addCategory':
+    case ['addCategory', 'Administrateur']:
         $categoryController->addCategory();
         break;
     case 'deleteCategory':

@@ -81,12 +81,15 @@
                                                         <i class="fa fa-star text-warning"></i>
                                                         <!-- <span class="text-muted ms-3">(449 customer review)</span> -->
                                                     </div>
+                                                    <hr>
                                                     <div class="product-price">
-                                                        <h6 class="price-title fw-bold">Point</h6>
-                                                        <p class="sale-price"><i class="icofont-money-bag text-danger"></i><?php echo $article['point'] ?></p>
-                                                        <!-- <p class="regular-price text-danger">$ 179 USD</p> -->
+                                                        <p class="h4  fw-bold"><i class="icofont-money-bag text-danger"></i><?php echo $article['point'] ?> point(s)</p>
+                                                        <!-- <p class="regular-price text-danger">Point</p> -->
                                                     </div>
+                                                    <hr>
+                                                        <h6 class="price-title fw-bold">Description </h6>
                                                     <p><?php echo $article['description'] ?></p>
+                                                    <hr>
                                                     <div class="product-btn mb-5">
                                                         <div class="d-flex flex-wrap">
                                                             <?php if (isset($_SESSION["soseplast_user_id"])): ?>
