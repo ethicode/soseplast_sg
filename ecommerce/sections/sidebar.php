@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <div class="card mb-3">
+    <!-- <div class="card mb-3">
         <div class="dropdown m-3">
             <button class="btn btn-danger text-white  fw-bold dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 Filtrer par point
@@ -29,5 +29,5 @@
                 <li><a class="dropdown-item py-1 rounded" href="index.php?action=filtrer&filtrer=5">5 points</a></li>
             </ul>
         </div>
-    </div>
+    </div> -->
 </div>
