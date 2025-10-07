@@ -43,39 +43,33 @@
                             <div class="row g-3 mb-3 row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-3">
                                 <?php foreach ($articles as $article): ?>
                                     <div class="col">
-                                        <div class="card h-100">
-                                            <div class="product">
+                                        <div class="card  d-flex flex-column h-100" style="opacity: <?php echo $article['is_ordered'] == 1 ? '0.6' : '1'; ?>;">
+                                            <div class="product pb-0 mb-0">
                                                 <div class="product-image">
                                                     <div class="product-item active">
-                                                        <a href="index.php?action=detailArticle&id=<?php echo $article["id"] ?>">
-                                                            <img src="inventory/<?php echo $article["image_url"] ?>" alt="product" class="img-fluid w-100">
+                                                        <a class="stretched-link" href="index.php?action=detailArticle&id=<?php echo $article["id"] ?>">
+                                                            <img style="max-height: 300px;" src="inventory/<?php echo $article["image_url"] ?>" alt="product" class="img-fluid w-100">
                                                         </a>
                                                     </div>
                                                     <a class="add-wishlist" href="#">
                                                         <i class="bi bi-heart-fill text-danger"></i>
                                                     </a>
                                                 </div>
-                                                <div class="product-content p-3">
-                                                    <span class="rating mb-2 d-block"><i class="icofont-star text-warning"></i> 4.5 (145)</span>
+                                            </div>
+                                            <div class="card-footer bg-white border-0 mt-auto">
+                                                <div class="product-content px-3">
+                                                    <span class="rating mb-2 d-block fw-bold fs-5 text-black"><i class="icofont-money-bag text-danger"></i><?php echo $article["point"] ?> </span>
                                                     <a href="product-detail.html" class="fw-bold"><?php echo $article["name"] ?> </a>
-                                                    <p class="text-muted"><?php echo substr($article["description"], 0, 88) . "...";?></p>
-                                                    <span class="d-block fw-bold fs-5 text-black"><?php echo $article["price"] ?></span>
-                                                    <?php if (isset($_SESSION["soseplast_user_id"])): ?>
-                                                        <?php if ($command): ?>
-                                                            <button type="button" class="btn waves-effect waves-light btn-danger" onclick="confirmCancelReservation('<?php echo $article["id"]; ?>')">Annuler la réservation</button>
-                                                        <?php else: ?>
-                                                            <button type="button" class="btn waves-effect waves-light btn-danger text-white fw-bold" data-bs-toggle="modal" data-bs-target="#command<?php echo $article["id"] ?>">Commander</button>
-                                                        <?php endif ?>
-                                                    <?php else: ?>
-                                                        <a href="index.php?action=loginForm" class="btn waves-effect waves-light btn-danger">Connectez-vous pour commander cet article</a>
-                                                    <?php endif ?>
+                                                    <p class="text-muted"><?php echo substr($article["description"], 0, 90) . "..."; ?></p>
+                                                    <!-- <button type="button" class="btn waves-effect waves-light btn-danger text-white fw-bold" data-bs-toggle="modal" data-bs-target="#command<?php echo $article["id"] ?>">Commander</button> -->
+
                                                     <div id="command<?php echo $article["id"] ?>" class="modal in" tabindex="-1" role="dialog"
                                                         aria-labelledby="myModalLabel" aria-hidden="true">
                                                         <form action="index.php?action=addCommand" method="POST" class="form-horizontal form-material">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h4 class="modal-title text-dark fw-bold" id="myModalLabel">Réserver cet article<?php echo $_SESSION["soseplast_user_id"] ?></h4>
+                                                                        <h4 class="modal-title text-dark fw-bold" id="myModalLabel">Réserver cet article</h4>
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                             aria-hidden="true"></button>
                                                                     </div>
@@ -94,13 +88,20 @@
                                                         <!-- /.modal-dialog -->
                                                     </div>
                                                 </div>
+                                                <?php if ($article['is_ordered'] == 1): ?>
+                                                    <button type="button" class="btn btn-secondary text-white fw-bold" disabled>Déjà commandé par un utilisateur</button>
+                                                <?php else: ?>
+                                                    <div class="d-grid gap-2">
+                                                        <a class="stretched-link btn waves-effect waves-light btn-danger text-white fw-bold" href="index.php?action=detailArticle&id=<?php echo $article["id"] ?>">Disponible</a>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>
                                 <?php endforeach ?>
 
                             </div>
-                            <div class="row g-3 mb-3">
+                            <!-- <div class="row g-3 mb-3">
                                 <div class="col-md-12">
                                     <nav class="justify-content-end d-flex">
                                         <ul class="pagination">
@@ -118,7 +119,7 @@
                                         </ul>
                                     </nav>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div> <!-- Row end  -->
                 </div>

@@ -87,7 +87,7 @@ class ArticleController
     {
         $search = $_GET['search'];
         $articles = $this->articleModel->searchArticles($search);
-        $categories = $this->modelCategory->getAllCategory();
+        $categories = $this->categoryModel->getAllCategoryForSale();
         require_once('ecommerce/home.php');
     }
 

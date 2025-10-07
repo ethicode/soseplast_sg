@@ -4,7 +4,7 @@
         <!-- Logo -->
         <!-- ============================================================== -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.php?action=dashboard">
+            <a class="navbar-brand" href="index.php?action=articles">
                 <!-- Logo icon --><b>
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
@@ -45,9 +45,6 @@
                         <li class="nav-item dropdown u-pro">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="hidden-md-down">Mon compte &nbsp;<i class="ti-angle-down"></i></span> </a>
                             <div class="dropdown-menu dropdown-menu-end animated flipInY">
-                                <!-- text-->
-                                <a href="index.php?action=mes-commandes" class="dropdown-item"><i class="ti-wallet"></i> Mes commandes</a>
-                                <!-- text-->
                                 <a href="index.php?action=logout" class="dropdown-item"><i class=" fas fa-outdent"></i> Se déconnecter</a>
                                 <!-- text-->
                             </div>
