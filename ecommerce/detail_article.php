@@ -45,26 +45,26 @@
                                                     <div class="product-thumb-image">
                                                         <div class="product-thumb-image-active nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                                             <a class="single-thumb" id="v-pills-one-tab" data-bs-toggle="pill" href="#v-pills-one" role="button" aria-controls="v-pills-one">
-                                                                <img src="inventory/<?php echo $article["image_2"] ?>" alt="">
+                                                                <img src="<?php $_SERVER['SERVER_ADDR']?>/soseplast/inventory/public/images/<?php echo $article["image_2"] ?>" alt="">
                                                             </a>
                                                             <a class="single-thumb" id="v-pills-two-tab" data-bs-toggle="pill" href="#v-pills-two" role="button" aria-controls="v-pills-two">
-                                                                <img src="inventory/<?php echo $article["image_1"] ?>" alt="">
+                                                                <img src="<?php $_SERVER['SERVER_ADDR']?>/soseplast/inventory/public/images/<?php echo $article["image_1"] ?>" alt="">
                                                             </a>
                                                             <a class="single-thumb active" aria-current="page" id="v-pills-three-tab" data-bs-toggle="pill" role="button" href="#v-pills-three" aria-controls="v-pills-three">
-                                                                <img src="inventory/<?php echo $article["image_url"] ?>" alt="">
+                                                                <img src="<?php $_SERVER['SERVER_ADDR']?>/soseplast/inventory/public/images/<?php echo $article["image_url"] ?>" alt="">
                                                             </a>
                                                         </div>
                                                     </div>
                                                     <div class="product-image">
                                                         <div class="product-image-active tab-content" id="v-pills-tabContent">
                                                             <a class="single-image tab-pane fade" id="v-pills-one" role="tabpanel" aria-labelledby="v-pills-one-tab">
-                                                                <img src="inventory/<?php echo $article["image_2"] ?>" alt="">
+                                                                <img src="<?php $_SERVER['SERVER_ADDR']?>/soseplast/inventory/public/images/<?php echo $article["image_2"] ?>" alt="">
                                                             </a>
                                                             <a class="single-image tab-pane fade" id="v-pills-two" role="tabpanel" aria-labelledby="v-pills-two-tab">
-                                                                <img src="inventory/<?php echo $article["image_1"] ?>" alt="">
+                                                                <img src="<?php $_SERVER['SERVER_ADDR']?>/soseplast/inventory/public/images/<?php echo $article["image_1"] ?>" alt="">
                                                             </a>
                                                             <a class="single-image tab-pane fade active show" id="v-pills-three" role="tabpanel" aria-labelledby="v-pills-three-tab">
-                                                                <img src="inventory/<?php echo $article["image_url"] ?>" alt="">
+                                                                <img src="<?php $_SERVER['SERVER_ADDR']?>/soseplast/inventory/public/images/<?php echo $article["image_url"] ?>" alt="">
                                                             </a>
                                                         </div>
                                                     </div>

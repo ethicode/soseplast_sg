@@ -152,28 +152,28 @@ class ArticleController
         require_once('views/sale/sells.php');
     }
 
-    public function addArticle()
+   public function addArticle()
 {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $upload_directory = "./public/images/";
 
-        // Définir le chemin de destination des images après upload
-        $image_url = $upload_directory . basename($_FILES["image_url"]["name"]);
-        $image_1 = $upload_directory . basename($_FILES["image_1"]["name"]);
-        $image_2 = $upload_directory . basename($_FILES["image_2"]["name"]);
-        $image_3 = $upload_directory . basename($_FILES["image_3"]["name"]);
+        // Récupérer les noms originaux des fichiers
+        $image_url_name = basename($_FILES["image_url"]["name"]);
+        $image_1_name = basename($_FILES["image_1"]["name"]);
+        $image_2_name = basename($_FILES["image_2"]["name"]);
+        $image_3_name = basename($_FILES["image_3"]["name"]);
 
-        // Générer un nom unique pour les fichiers afin d'éviter les conflits de noms
-        $image_url = $this->generateUniqueFileName($image_url);
-        $image_1 = $this->generateUniqueFileName($image_1);
-        $image_2 = $this->generateUniqueFileName($image_2);
-        $image_3 = $this->generateUniqueFileName($image_3);
+        // Générer des noms de fichiers uniques (sans le chemin)
+        $image_url = $this->generateUniqueFileName($image_url_name);
+        $image_1 = $this->generateUniqueFileName($image_1_name);
+        $image_2 = $this->generateUniqueFileName($image_2_name);
+        $image_3 = $this->generateUniqueFileName($image_3_name);
 
-        // Déplacer les fichiers téléchargés dans le répertoire 'public/images/'
-        move_uploaded_file($_FILES["image_url"]["tmp_name"], $image_url);
-        move_uploaded_file($_FILES["image_1"]["tmp_name"], $image_1);
-        move_uploaded_file($_FILES["image_2"]["tmp_name"], $image_2);
-        move_uploaded_file($_FILES["image_3"]["tmp_name"], $image_3);
+        // Déplacer les fichiers vers le répertoire d'upload
+        move_uploaded_file($_FILES["image_url"]["tmp_name"], $upload_directory . $image_url);
+        move_uploaded_file($_FILES["image_1"]["tmp_name"], $upload_directory . $image_1);
+        move_uploaded_file($_FILES["image_2"]["tmp_name"], $upload_directory . $image_2);
+        move_uploaded_file($_FILES["image_3"]["tmp_name"], $upload_directory . $image_3);
 
         // Récupérer les autres informations de l'article
         $name = $_POST['name'];
@@ -184,12 +184,26 @@ class ArticleController
         $point = $_POST['point'];
         $for_sale = isset($_POST['for_sale']) ? 1 : 0;
 
-        // Appeler le modèle pour ajouter l'article
-        $this->articleModel->addArticle($name, $description, $category_id, $point, $for_sale, $quantity, $location, $image_url, $image_1, $image_2, $image_3);
+        // Appeler le modèle pour ajouter l'article avec les noms de fichiers uniquement
+        $this->articleModel->addArticle(
+            $name,
+            $description,
+            $category_id,
+            $point,
+            $for_sale,
+            $quantity,
+            $location,
+            $image_url,
+            $image_1,
+            $image_2,
+            $image_3
+        );
     }
+
     // Rediriger vers la liste des articles
     header('Location: index.php?action=articles');
 }
+
 
 // Fonction pour générer un nom unique pour le fichier
 private function generateUniqueFileName($filePath)

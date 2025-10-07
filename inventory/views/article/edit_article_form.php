@@ -173,7 +173,7 @@
                                             <div class="card">
                                                 <div class="card-body">
                                                     <h4 class="card-title">Image principal</h4>
-                                                    <input type="file" name="image_url" id="input-file-now-custom-1" value="<?php echo $article["image_url"] ?>" class="dropify" data-default-file="<?php echo $article["image_url"] ?>" />
+                                                    <input type="file" name="image_url" id="input-file-now-custom-1" value="<?php $_SERVER['SERVER_ADDR']?>/soseplast/inventory/public/images/<?php echo $article["image_url"] ?>" class="dropify" data-default-file="<?php $_SERVER['SERVER_ADDR']?>/soseplast/inventory/public/images/<?php echo $article["image_url"] ?>" />
                                                 </div>
                                             </div>
                                         </div>

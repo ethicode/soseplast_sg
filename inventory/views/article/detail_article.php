@@ -87,7 +87,7 @@
                     <div class="col-lg-3 col-xlg-3 col-md-5">
                         <div class="card el-element-overlay shadow-sm">
                             <div class="el-card-item p-0">
-                                <div class="el-card-avatar el-overlay-1 m-0"> <img src="<?php echo $article["image_url"] != null ? $article["image_url"] : "./public/assets/images/no_image.jpg" ?>" alt="user" />
+                                <div class="el-card-avatar el-overlay-1 m-0"> <img src="<?php $_SERVER['SERVER_ADDR']?>/soseplast/inventory/public/images/<?php echo $article["image_url"] != null ? $article["image_url"] : "./public/assets/images/no_image.jpg" ?>" alt="Image" />
                                     <div class="el-overlay m-0">
                                         <ul class="el-info">
                                             <li><a class="btn default btn-outline image-popup-vertical-fit" href="<?php echo $article["image_url"] != null ? $article["image_url"] : "./public/assets/images/no_image.jpg" ?>"><i class="icon-magnifier"></i></a></li>
@@ -102,7 +102,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="card el-element-overlay m-0">
                                         <div class="el-card-item p-0">
-                                            <div class="el-card-avatar el-overlay-1 m-0"> <img src="<?php echo $article["image_1"] != null ? $article["image_1"] : "./public/assets/images/no_image.jpg" ?>" alt="user" />
+                                            <div class="el-card-avatar el-overlay-1 m-0"> <img src="<?php $_SERVER['SERVER_ADDR']?>/soseplast/inventory/public/images/<?php echo $article["image_1"] != null ? $article["image_1"] : "./public/assets/images/no_image.jpg" ?>" alt="Image" />
                                                 <div class="el-overlay m-0">
                                                     <ul class="el-info">
                                                         <li><a class="btn default btn-outline image-popup-vertical-fit" href="<?php echo $article["image_1"] != null ? $article["image_1"] : "./public/assets/images/no_image.jpg" ?>"><i class="icon-magnifier"></i></a></li>
@@ -115,7 +115,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="card el-element-overlay m-0">
                                         <div class="el-card-item p-0">
-                                            <div class="el-card-avatar el-overlay-1 m-0"> <img src="<?php echo $article["image_2"] != null ? $article["image_2"] : "./public/assets/images/no_image.jpg" ?>" alt="user" />
+                                            <div class="el-card-avatar el-overlay-1 m-0"> <img src="<?php $_SERVER['SERVER_ADDR']?>/soseplast/inventory/public/images/<?php echo $article["image_2"] != null ? $article["image_2"] : "./public/assets/images/no_image.jpg" ?>" alt="Image" />
                                                 <div class="el-overlay m-0">
                                                     <ul class="el-info">
                                                         <li><a class="btn default btn-outline image-popup-vertical-fit" href="<?php echo $article["image_2"] != null ? $article["image_2"] : "./public/assets/images/no_image.jpg" ?>"><i class="icon-magnifier"></i></a></li>
@@ -128,7 +128,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="card el-element-overlay m-0">
                                         <div class="el-card-item p-0">
-                                            <div class="el-card-avatar el-overlay-1 m-0"> <img src="<?php echo $article["image_3"] != null ? $article["image_3"] : "./public/assets/images/no_image.jpg" ?>" alt="user" />
+                                            <div class="el-card-avatar el-overlay-1 m-0"> <img src="<?php $_SERVER['SERVER_ADDR']?>/soseplast/inventory/public/images/<?php echo $article["image_3"] != null ? $article["image_3"] : "./public/assets/images/no_image.jpg" ?>" alt="Image" />
                                                 <div class="el-overlay m-0">
                                                     <ul class="el-info">
                                                         <li><a class="btn default btn-outline image-popup-vertical-fit" href="<?php echo $article["image_3"] != null ? $article["image_3"] : "./public/assets/images/no_image.jpg" ?>"><i class="icon-magnifier"></i></a></li>

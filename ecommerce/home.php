@@ -70,7 +70,7 @@
                                                 <div class="product-image">
                                                     <div class="product-item active">
                                                         <a class="stretched-link" href="index.php?action=detailArticle&id=<?php echo $article["id"] ?>">
-                                                            <img style="max-height: 300px;" src="inventory/<?php echo $article["image_url"] ?>" alt="product" class="img-fluid w-100">
+                                                            <img style="max-height: 300px;" src="<?php $_SERVER['SERVER_ADDR']?>/soseplast/inventory/public/images/<?php echo $article["image_url"] ?>" alt="product" class="img-fluid w-100">
                                                         </a>
                                                     </div>
                                                     <a class="add-wishlist" href="#">
