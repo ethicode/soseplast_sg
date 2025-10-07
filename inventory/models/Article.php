@@ -33,12 +33,11 @@ class Article
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getForSaleArticlesByPagination($calc_page, $num_results_on_page)
+    public function getForSaleArticlesByPagination()
     {
-        $stmt = $this->db->prepare("SELECT article.name, article.id, article.description, article.location, article.for_sale, article.price, article.quantity, article.image_url, article.created_at, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id WHERE article.for_sale = true ORDER BY article.id DESC  LIMIT ?,?;");
-        $stmt->bind_param('ii', $calc_page, $num_results_on_page); // "i" signifie que le paramètre est un entier.
-        $stmt->execute();
-        $result = $stmt->get_result();
+        // $stmt = $this->db->prepare("SELECT article.name, article.id, article.description, article.location, article.for_sale, article.price, article.quantity, article.image_url, article.created_at, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id WHERE article.for_sale = true ORDER BY article.id DESC ;");
+         $sql = "SELECT article.name, article.id, article.description, article.location, article.for_sale, article.price, article.quantity, article.image_url, article.created_at, category.name as category_name FROM article LEFT JOIN category ON article.category_id = category.id WHERE article.for_sale = true ORDER BY article.id DESC ;";
+        $result = $this->db->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 

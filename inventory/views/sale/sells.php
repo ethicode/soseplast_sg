@@ -89,11 +89,8 @@
                                                 <h4 class="card-title m-t-10">Liste des articles en cession </h4>
                                             </div>
                                             <div class="ms-auto">
-                                                <!-- <form method="GET" action="?action=articles">
-                                                    <input type="hidden" name="action" value="searchArticle">
-                                                    <input type="text" name="search" id="demo-input-search2" placeholder="Rechercher"
-                                                        class="form-control">
-                                                </form> -->
+                                                                                   <a href="index.php?action=addArticleForm" type="button" class="btn btn-info btn-rounded m-b-20 float-end text-white">Ajouter un article</a>
+
                                             </div>
                                         </div>
                                     </div>

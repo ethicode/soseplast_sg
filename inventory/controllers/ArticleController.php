@@ -142,7 +142,7 @@ class ArticleController
         $calc_page = ($page - 1) * $num_results_on_page;
 
 
-        $articles = $this->articleModel->getForSaleArticlesByPagination($calc_page, $num_results_on_page);
+        $articles = $this->articleModel->getForSaleArticlesByPagination();
         $categories = $this->modelCategory->getAllCategory();
         $articleCount = $this->articleModel->selectCount();
         require_once('views/sale/sells.php');
