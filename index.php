@@ -222,6 +222,11 @@ switch ([$action, $role]) {
     case ['ajouterUnDonEnNature', 'Utilisateur']:
         $donController->ajouterDonEnNumeraire();
         break;
+    case ['filtrer', 'Administrateur']:
+    case ['filtrer', 'Utilisateur']:
+    case ['filtrer', 'Collaborateur']:
+        $shoppingController->showAllArticles();
+        break;
     default:
         $shoppingController->showAllArticles();
         break;

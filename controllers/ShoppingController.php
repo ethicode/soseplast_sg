@@ -25,42 +25,46 @@ class ShoppingController
     }
 
     public function showAllArticles()
-{
-    // Nombre total d'articles à vendre
-    $total_articles = $this->articleModel->selectCountSell();
+    {
+        // Nombre total d'articles à vendre
+        $total_articles = $this->articleModel->selectCountSell();
 
-    // Définir le nombre d'articles par page
-    $num_results_on_page = 24;
+        // Définir le nombre d'articles par page
+        $num_results_on_page = 18;
 
-    // Calculer le nombre total de pages
-    $total_pages = ceil($total_articles / $num_results_on_page);
+        // Calculer le nombre total de pages
+        $total_pages = ceil($total_articles / $num_results_on_page);
 
-    // Obtenir la page actuelle depuis l'URL (par défaut = 1)
-    $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+        // Obtenir la page actuelle depuis l'URL (par défaut = 1)
+        $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
 
-    // Sécuriser la valeur de page (éviter les débordements)
-    if ($page < 1) {
-        $page = 1;
-    } elseif ($page > $total_pages) {
-        $page = $total_pages;
+        // Sécuriser la valeur de page (éviter les débordements)
+        if ($page < 1) {
+            $page = 1;
+        } elseif ($page > $total_pages) {
+            $page = $total_pages;
+        }
+
+        // Calculer l'offset pour la requête SQL
+        $calc_page = ($page - 1) * $num_results_on_page;
+
+        // Récupérer les articles paginés
+        $articles = $this->articleModel->getForSaleArticlesByPagination($calc_page, $num_results_on_page);
+        if (isset($_GET['filtrer'])) {
+            $point = $_GET['filtrer'];
+            $articles = $this->articleModel->getForSaleArticlesByPagination($calc_page, $num_results_on_page);
+        }
+
+        // Récupérer les catégories
+        $categories = $this->categoryModel->getAllCategoryForSale();
+
+        // Récupérer les infos de l'utilisateur connecté
+        $id = $_SESSION['soseplast_user_id'];
+        $user = $this->userModel->getUserById($id);
+
+        // Inclure la vue
+        require_once('ecommerce/home.php');
     }
-
-    // Calculer l'offset pour la requête SQL
-    $calc_page = ($page - 1) * $num_results_on_page;
-
-    // Récupérer les articles paginés
-    $articles = $this->articleModel->getForSaleArticlesByPagination($calc_page, $num_results_on_page);
-
-    // Récupérer les catégories
-    $categories = $this->categoryModel->getAllCategoryForSale();
-
-    // Récupérer les infos de l'utilisateur connecté
-    $id = $_SESSION['soseplast_user_id'];
-    $user = $this->userModel->getUserById($id);
-
-    // Inclure la vue
-    require_once('ecommerce/home.php');
-}
 
 
     public function showDetailArticle()

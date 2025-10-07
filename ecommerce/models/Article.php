@@ -57,6 +57,29 @@ class Article
     }
 
 
+    public function getForSaleArticlesByPoint($calc_page, $num_results_on_page, $point)
+    {
+         $stmt = $this->db->prepare("
+        SELECT article.name, article.point, article.id, article.description, article.location, article.for_sale, 
+               article.price, article.quantity, article.image_url, article.created_at, 
+               category.name as category_name, 
+               (CASE WHEN command.article_id IS NOT NULL THEN 1 ELSE 0 END) AS is_ordered
+                FROM article
+                LEFT JOIN category ON article.category_id = category.id
+                LEFT JOIN command ON article.id = command.article_id 
+                WHERE article.for_sale = true 
+                AND (command.article_id IS NULL OR command.is_validated IS NULL)
+                ORDER BY article.id DESC
+                LIMIT ?, ?
+                    ");
+
+        $stmt->bind_param('ii', $calc_page, $num_results_on_page); // "i" signifie que le paramètre est un entier.
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+
     public function getAllArticlesToSell()
     {
         $sql = "SELECT  sell.id, sell.price, sell.id, sell.is_sold, sell.client_id as client_id, article.name, article.description, article.location, article.quantity, article.created_at FROM sell LEFT JOIN article ON sell.article_id = article.id ORDER BY sell.id DESC;";

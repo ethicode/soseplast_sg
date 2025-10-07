@@ -17,24 +17,17 @@
         </div>
     </div>
     <div class="card mb-3">
-        <div class="reset-block">
-            <div class="filter-title">
-                <h4 class="title">Filtrer</h4>
-            </div>
-        </div>
-        <div class="price-range">
-            <div class="price-amount flex-wrap">
-                <div class="amount-input m-3">
-                    <select name="point" class="form-select" aria-label="Default select example">
-                        <option value="1">Filtrer par point</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-            </div>
+        <div class="dropdown m-3">
+            <button class="btn btn-danger text-white  fw-bold dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Filtrer par point
+            </button>
+            <ul class="dropdown-menu border-0 shadow p-3">
+                <li><a class="dropdown-item py-1 rounded" href="index.php?action=filtrer&filtrer=1">1 point</a></li>
+                <li><a class="dropdown-item py-1 rounded" href="index.php?action=filtrer&filtrer=2">2 points</a></li>
+                <li><a class="dropdown-item py-1 rounded" href="index.php?action=filtrer&filtrer=3">3 points</a></li>
+                <li><a class="dropdown-item py-1 rounded" href="index.php?action=filtrer&filtrer=4">4 points</a></li>
+                <li><a class="dropdown-item py-1 rounded" href="index.php?action=filtrer&filtrer=5">5 points</a></li>
+            </ul>
         </div>
     </div>
 </div>
