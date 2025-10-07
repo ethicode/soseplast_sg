@@ -149,55 +149,56 @@ class ArticleController
     }
 
     public function addArticle()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $upload_directory = "./public/images/";
-            $image_url = $_FILES["image_url"]["name"];
-            $image_1 = $_FILES["image_1"]["name"];
-            $image_2 = $_FILES["image_2"]["name"];
-            $image_3 = $_FILES["image_3"]["name"];
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $upload_directory = "./public/images/";
 
-            if (file_exists($image_url)) {
-                $image_url = $upload_directory . basename($_FILES["image_url"]["name"]);
-                $file_extension = pathinfo($image_url, PATHINFO_EXTENSION);
-                $file_name = pathinfo($image_url, PATHINFO_FILENAME) . '_' . uniqid() . '.' . $file_extension;
-                $image_url = $upload_directory . $file_name;
-            }
-            if (file_exists($image_1)) {
-                $image_1 = $upload_directory . basename($_FILES["image_1"]["name"]);
-                $file_extension = pathinfo($image_1, PATHINFO_EXTENSION);
-                $file_name = pathinfo($image_1, PATHINFO_FILENAME) . '_' . uniqid() . '.' . $file_extension;
-                $image_1 = $upload_directory . $file_name;
-            }
-            if (file_exists($image_2)) {
-                $file_extension = pathinfo($image_2, PATHINFO_EXTENSION);
-                $file_name = pathinfo($image_2, PATHINFO_FILENAME) . '_' . uniqid() . '.' . $file_extension;
-                $image_2 = $upload_directory . $file_name;
-                $image_2 = $upload_directory . basename($_FILES["image_2"]["name"]);
-            }
-            if (file_exists($image_3)) {
-                $file_extension = pathinfo($image_3, PATHINFO_EXTENSION);
-                $file_name = pathinfo($image_3, PATHINFO_FILENAME) . '_' . uniqid() . '.' . $file_extension;
-                $image_3 = $upload_directory . $file_name;
-                $image_3 = $upload_directory . basename($_FILES["image_3"]["name"]);
-            }
-            move_uploaded_file($_FILES["image_url"]["tmp_name"], $image_url);
-            move_uploaded_file($_FILES["image_1"]["tmp_name"], $image_1);
-            move_uploaded_file($_FILES["image_2"]["tmp_name"], $image_2);
-            move_uploaded_file($_FILES["image_3"]["tmp_name"], $image_3);
+        // Définir le chemin de destination des images après upload
+        $image_url = $upload_directory . basename($_FILES["image_url"]["name"]);
+        $image_1 = $upload_directory . basename($_FILES["image_1"]["name"]);
+        $image_2 = $upload_directory . basename($_FILES["image_2"]["name"]);
+        $image_3 = $upload_directory . basename($_FILES["image_3"]["name"]);
 
-            $name = $_POST['name'];
-            $description = $_POST['description'];
-            $category_id = $_POST['category'];
-            $quantity = $_POST['quantity'];
-            $location = $_POST['location'];
-            $point = $_POST['point'];
-            $for_sale = isset($_POST['for_sale']) ? 1 : 0;
+        // Générer un nom unique pour les fichiers afin d'éviter les conflits de noms
+        $image_url = $this->generateUniqueFileName($image_url);
+        $image_1 = $this->generateUniqueFileName($image_1);
+        $image_2 = $this->generateUniqueFileName($image_2);
+        $image_3 = $this->generateUniqueFileName($image_3);
 
-            $this->articleModel->addArticle($name, $description, $category_id, $point, $for_sale, $quantity, $location, $image_url, $image_1, $image_2, $image_3);
-        }
-        header('Location: index.php?action=articles');
+        // Déplacer les fichiers téléchargés dans le répertoire 'public/images/'
+        move_uploaded_file($_FILES["image_url"]["tmp_name"], $image_url);
+        move_uploaded_file($_FILES["image_1"]["tmp_name"], $image_1);
+        move_uploaded_file($_FILES["image_2"]["tmp_name"], $image_2);
+        move_uploaded_file($_FILES["image_3"]["tmp_name"], $image_3);
+
+        // Récupérer les autres informations de l'article
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $category_id = $_POST['category'];
+        $quantity = $_POST['quantity'];
+        $location = $_POST['location'];
+        $point = $_POST['point'];
+        $for_sale = isset($_POST['for_sale']) ? 1 : 0;
+
+        // Appeler le modèle pour ajouter l'article
+        $this->articleModel->addArticle($name, $description, $category_id, $point, $for_sale, $quantity, $location, $image_url, $image_1, $image_2, $image_3);
     }
+    // Rediriger vers la liste des articles
+    header('Location: index.php?action=articles');
+}
+
+// Fonction pour générer un nom unique pour le fichier
+private function generateUniqueFileName($filePath)
+{
+    // Vérifier si le fichier existe déjà et générer un nom unique
+    if (file_exists($filePath)) {
+        $file_extension = pathinfo($filePath, PATHINFO_EXTENSION);
+        $file_name = pathinfo($filePath, PATHINFO_FILENAME) . '_' . uniqid() . '.' . $file_extension;
+        return dirname($filePath) . '/' . $file_name;
+    }
+    return $filePath;
+}
+
 
     public function saveArticle()
     {
