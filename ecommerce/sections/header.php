@@ -74,7 +74,7 @@
                             <span class="visually-hidden">Mes points</span>
                         </span>
                     </button>
-                    <a href="/soseplast/inventory/index.php?action=articles" class="btn btn-danger fw-bold text-white position-relative me-5">Admin</a>
+                    <a target="_blank" href="/soseplast/inventory/index.php?action=articles" class="btn btn-danger fw-bold text-white position-relative me-5">Admin</a>
                 </div>
             <?php endif ?>
             <!-- menu toggler -->
