@@ -4,7 +4,7 @@ class Request {
 
     public function __construct() {
         // Fichier de configuration de la base de données
-        require_once('config/config_db.php');
+        require_once('../config/config_db.php');
         
         // Connection à la base de données
         $this->db = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
